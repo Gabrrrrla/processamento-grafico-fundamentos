@@ -1,0 +1,101 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"install"
+		],
+		"files" : 
+		[
+			"build/_deps/soil2-src/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 65,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 75,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 89,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 91,
+				"parent" : 0
+			}
+		]
+	},
+	"installers" : 
+	[
+		{
+			"backtrace" : 1,
+			"component" : "Unspecified",
+			"destination" : "lib",
+			"paths" : 
+			[
+				"_deps/soil2-build/libsoil2.a"
+			],
+			"targetId" : "soil2::@3f1e66501dfc04540282",
+			"targetIndex" : 3,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 2,
+			"component" : "Unspecified",
+			"destination" : "include/soil2",
+			"paths" : 
+			[
+				"build/_deps/soil2-src/src/SOIL2/SOIL2.h"
+			],
+			"type" : "file"
+		},
+		{
+			"backtrace" : 3,
+			"component" : "Unspecified",
+			"destination" : "share/soil2",
+			"paths" : 
+			[
+				"build/_deps/soil2-build/soil2-config.cmake"
+			],
+			"type" : "file"
+		},
+		{
+			"backtrace" : 4,
+			"component" : "Unspecified",
+			"destination" : "share/soil2",
+			"exportName" : "soil2_target",
+			"exportTargets" : 
+			[
+				{
+					"id" : "soil2::@3f1e66501dfc04540282",
+					"index" : 3
+				}
+			],
+			"paths" : 
+			[
+				"_deps/soil2-build/CMakeFiles/Export/f87b408004b2d9e63ef3f84bf93bb0aa/soil2-targets.cmake"
+			],
+			"type" : "export"
+		}
+	],
+	"paths" : 
+	{
+		"build" : "_deps/soil2-build",
+		"source" : "build/_deps/soil2-src"
+	}
+}

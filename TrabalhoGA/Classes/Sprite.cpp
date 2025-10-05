@@ -72,9 +72,9 @@ void Sprite::ChangeAnimation(const char* newTexturePath, int newFrames, float ne
 }
 
 bool Sprite::CheckCollision(const Sprite& other) {
-    bool collisionX = Position.x + Size.x >= other.Position.x &&
+    bool collisionX = Position.x + Size.x - 30.0f >= other.Position.x &&
                       other.Position.x + other.Size.x >= Position.x;
-    bool collisionY = Position.y + Size.y >= other.Position.y &&
+    bool collisionY = Position.y + Size.y - 30.0f >= other.Position.y &&
                       other.Position.y + other.Size.y >= Position.y;
     return collisionX && collisionY;
 }
@@ -98,9 +98,6 @@ void Sprite::Draw(Shader& shader) {
     // Calcula UVs com base nos parâmetros configuráveis 
     float u = (float)currentFrame * (frameWidth / totalTextureWidth); 
     float v = 1.0f - ((float)row + 1.0f) * (frameHeight / totalTextureHeight);
-    //if()
-    printf("height - %f %f \n",frameHeight, totalTextureHeight);
-    printf("width %f %f \n",frameWidth, totalTextureWidth);
 
     GLfloat vertices[] = {
         // Posição           // Coordenadas de Textura

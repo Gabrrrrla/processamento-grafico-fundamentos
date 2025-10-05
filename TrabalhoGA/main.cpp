@@ -13,7 +13,10 @@ const unsigned int SCR_WIDTH = 800;
 const unsigned int SCR_HEIGHT = 600;
 
 bool isJumping;
+bool isDucking = false;
 bool isHurt;
+float duckHeight = 64.0f;
+float originalHeight;
 float verticalVelocity;
 float jumpForce; // Força inicial do pulo
 std::vector<Sprite> obstacles;
@@ -23,10 +26,27 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height) {
 }
 
 void processInput(GLFWwindow* window, Sprite& elfa) {
-    if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS && !isJumping) {
+    if ((glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS || glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS) && !isJumping) {
         isJumping = true;
         verticalVelocity = jumpForce;
         elfa.ChangeAnimation("../Textures/pular.png", 5, 0.1f, 3, 320.0f, 256.0f); 
+    }
+    if ((glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS || glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS) 
+        && !isJumping) {
+        if (!isDucking) {
+            isDucking = true;
+            elfa.Size.y = duckHeight;  // abaixa a elfa
+            elfa.Position.y -= (originalHeight - duckHeight); // ajusta para o chão
+            elfa.ChangeAnimation("../Textures/abaixar.png", 3, 0.1f, 3, 192.0f, 256.0f, 64.0f, 64.0f); // exemplo
+        }
+    } else {
+        // Voltar a posição normal se não estiver pressionando
+        if (isDucking) {
+            isDucking = false;
+            elfa.Position.y += (originalHeight - duckHeight);
+            elfa.Size.y = originalHeight;
+            elfa.ChangeAnimation("../Textures/correr.png", 8, 0.1f, 3, 512.0f, 256.0f, 64.0f, 64.0f);
+        }
     }
 }
 
@@ -92,16 +112,18 @@ int main() {
         64,
         64
     );
-    
+
+    originalHeight = elfa.Size.y;
+
     // Obstáculos
     obstacles.push_back(Sprite
         (
             glm::vec2(600.0f, 150.0f), 
-            glm::vec2(64.0f, 64.0f), 
+            glm::vec2(64.0f, 40.0f), 
             "../Textures/tronco.png", 
             1, 1.0f, 
-            64.0f, 64.0f,
-            0, 64, 64
+            64.0f, 40.0f,
+            0, 64, 40
         )
     );
 
@@ -125,7 +147,6 @@ int main() {
         if(isHurt){
             // Espera a animação "machucada" terminar
             if (elfa.currentFrame == elfa.numFrames - 1) {
-                // Resetar posição e estado
                 elfa.Position = glm::vec2(0.0f, 150.0f);
                 isJumping = false;
                 verticalVelocity = 0.0f;
@@ -133,7 +154,6 @@ int main() {
                 // Resetar obstáculos
                 for (auto& o : obstacles) o.Position.x = 600.0f;
 
-                // Voltar para animação de correr
                 elfa.ChangeAnimation("../Textures/correr.png", 8, 0.1f, 3, 512.0f, 256.0f, 64.0f, 64.0f);
 
                 isHurt = false;
@@ -158,13 +178,14 @@ int main() {
                     elfa.Position.y = 150.0f;
                     isJumping = false;
                     verticalVelocity = 0.0f;
+                }
+                if(!isDucking){
+                    elfa.Size.y = originalHeight;
                     elfa.ChangeAnimation("../Textures/correr.png", 8, 0.1f, 3, 512.0f, 256.0f);
                 }
+
             }
             
-            // Atualizar a animação
-            //elfa.UpdateAnimation(deltaTime);
-
             // Atualizar obstáculos
             for (auto& obs : obstacles) {
                 obs.Position.x -= obstacleSpeed * deltaTime;
