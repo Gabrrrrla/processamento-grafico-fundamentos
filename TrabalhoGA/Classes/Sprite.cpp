@@ -72,9 +72,9 @@ void Sprite::ChangeAnimation(const char* newTexturePath, int newFrames, float ne
 }
 
 bool Sprite::CheckCollision(const Sprite& other) {
-    bool collisionX = Position.x + Size.x - 30.0f >= other.Position.x &&
+    bool collisionX = Position.x + Size.x >= other.Position.x &&
                       other.Position.x + other.Size.x >= Position.x;
-    bool collisionY = Position.y + Size.y - 30.0f >= other.Position.y &&
+    bool collisionY = Position.y + Size.y >= other.Position.y &&
                       other.Position.y + other.Size.y >= Position.y;
     return collisionX && collisionY;
 }

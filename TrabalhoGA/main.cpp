@@ -4,7 +4,6 @@
 #include <GLFW/glfw3.h> 
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
-
 #include "Classes/Shader.h"
 #include "Classes/Sprite.h"
 
@@ -15,11 +14,12 @@ const unsigned int SCR_HEIGHT = 600;
 bool isJumping;
 bool isDucking = false;
 bool isHurt;
-float duckHeight = 64.0f;
+float duckHeight = 40.0f;
 float originalHeight;
 float verticalVelocity;
-float jumpForce; // Força inicial do pulo
+float jumpForce; 
 std::vector<Sprite> obstacles;
+std::vector<Sprite> crystals;
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height) {
     glViewport(0, 0, width, height);
@@ -36,25 +36,50 @@ void processInput(GLFWwindow* window, Sprite& elfa) {
         if (!isDucking) {
             isDucking = true;
             elfa.Size.y = duckHeight;  // abaixa a elfa
-            elfa.Position.y -= (originalHeight - duckHeight); // ajusta para o chão
-            elfa.ChangeAnimation("../Textures/abaixar.png", 3, 0.1f, 3, 192.0f, 256.0f, 64.0f, 64.0f); // exemplo
+            elfa.Position.y = 150.0f;
+            elfa.ChangeAnimation("../Textures/abaixar.png", 3, 0.1f, 3, 192.0f, 256.0f, 64.0f, 64.0f); 
         }
     } else {
-        // Voltar a posição normal se não estiver pressionando
         if (isDucking) {
             isDucking = false;
             elfa.Position.y += (originalHeight - duckHeight);
             elfa.Size.y = originalHeight;
+            elfa.Position.y = 150.0f;  
             elfa.ChangeAnimation("../Textures/correr.png", 8, 0.1f, 3, 512.0f, 256.0f, 64.0f, 64.0f);
         }
     }
 }
+
+float GenerateNonOverlappingX(float minX, float maxX, const std::vector<Sprite>& others, float minDistance) {
+    float x;
+    bool overlap;
+    do {
+        x = minX + (rand() % (int)(maxX - minX + 1));
+        overlap = false;
+        for (auto& s : others) {
+            if (fabs(x - s.Position.x) < minDistance) {
+                overlap = true;
+                break;
+            }
+        }
+    } while (overlap);
+    return x;
+}
+
 
 // Matriz de Projeção Ortográfica
 glm::mat4 projection = glm::ortho(0.0f, (float)SCR_WIDTH, 0.0f, (float)SCR_HEIGHT, -1.0f, 1.0f);
 
 
 int main() {
+    float movementSpeed = 200.0f; 
+    float lastFrame = 0.0f;
+    float deltaTime = 0.0f;
+    verticalVelocity = 0.0f;
+    jumpForce = 500.0f; 
+    float gravity = -980.0f; 
+    isJumping = false; 
+
     glfwInit();
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
@@ -78,30 +103,30 @@ int main() {
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-    // Criação do Shader
     Shader mainShader("../Shaders/vertex.vs", "../Shaders/fragment.fs");
     mainShader.use();
     mainShader.setMat4("projection", projection);
     mainShader.setInt("ourTexture", 0); 
     
+    // Criação do background
     Sprite background
     (
         glm::vec2(0.0f, 0.0f),
         glm::vec2(800.0f, 650.0f),
         "../Textures/background.jpg",
-        1,      // linhas na spritesheet (1, já que é só uma imagem)
-        1.0f,   // velocidade de animação
-        800.0f, // largura total da imagem
-        650.0f, // altura total da imagem
-        0,      // offset X da primeira frame
-        800,    // largura do frame
-        650     // altura do frame
+        1,      
+        1.0f,   
+        800.0f, 
+        650.0f, 
+        0,      
+        800,    
+        650     
     );
 
-    // Criação da elfa (uma única variável)
+    // Criação da elfa 
     Sprite elfa
     (
-        glm::vec2(0.0f, 150.0f), //altura do chao do background 
+        glm::vec2(0.0f, 150.0f), 
         glm::vec2(64.0f, 64.0f), 
         "../Textures/correr.png", 
         8, 
@@ -112,10 +137,9 @@ int main() {
         64,
         64
     );
-
     originalHeight = elfa.Size.y;
 
-    // Obstáculos
+    // Criação dos obstáculos ruins (troncos)
     obstacles.push_back(Sprite
         (
             glm::vec2(600.0f, 150.0f), 
@@ -127,21 +151,25 @@ int main() {
         )
     );
 
-    float movementSpeed = 200.0f; // velocidade em pixels/segundo
-    float lastFrame = 0.0f;
-    float deltaTime = 0.0f;
-    // As variáveis de pulo foram movidas para o escopo global ou do main para evitar redefinição
-    verticalVelocity = 0.0f;
-    jumpForce = 500.0f; // Força inicial do pulo
-    float gravity = -980.0f; // Gravidade
-    isJumping = false;
+    // Criação dos obstáculos bons (cristais)
+    crystals.push_back(Sprite
+        (
+            glm::vec2(200.0f, 150.0f), 
+            glm::vec2(64.0f, 40.0f), 
+            "../Textures/cristal.png", 
+            1, 1.0f, 
+            64.0f, 40.0f,
+            0, 64, 40
+        )
+    );
 
-    // Loop de renderização
+    // Loop principal
     while (!glfwWindowShouldClose(window)) {
-        float currentFrame = (float)glfwGetTime(); // Adicionado cast para float
+        float currentFrame = (float)glfwGetTime();
         deltaTime = currentFrame - lastFrame;
         lastFrame = currentFrame;
-        float obstacleSpeed = 200.0f;
+        float obstacleSpeed = 250.0f;
+        float minDistance = 100.0f;
 
         elfa.UpdateAnimation(deltaTime);
         if(isHurt){
@@ -153,6 +181,7 @@ int main() {
 
                 // Resetar obstáculos
                 for (auto& o : obstacles) o.Position.x = 600.0f;
+                for (auto& c : crystals) c.Position.x = 600.0f; //rever
 
                 elfa.ChangeAnimation("../Textures/correr.png", 8, 0.1f, 3, 512.0f, 256.0f, 64.0f, 64.0f);
 
@@ -183,41 +212,45 @@ int main() {
                     elfa.Size.y = originalHeight;
                     elfa.ChangeAnimation("../Textures/correr.png", 8, 0.1f, 3, 512.0f, 256.0f);
                 }
-
             }
             
             // Atualizar obstáculos
             for (auto& obs : obstacles) {
                 obs.Position.x -= obstacleSpeed * deltaTime;
-
                 if (obs.Position.x + obs.Size.x < 0) {
-                    // Nova posição aleatória no eixo X (um pouco depois da tela)
-                    float randomOffsetX = 200.0f + (rand() % 400); 
-                    obs.Position.x = SCR_WIDTH + randomOffsetX;
+                    obs.Position.x = GenerateNonOverlappingX(SCR_WIDTH + 200.0f, SCR_WIDTH + 600.0f, crystals, minDistance);
 
-                    // Nova altura aleatória (escolhendo entre alguns níveis)
-                    float possibleHeights[] = {150.0f, 210.0f, 220.0f};
+                    float possibleHeights[] = {150.0f, 195.0f, 210.0f};
                     int randomIndex = rand() % 3;
                     obs.Position.y = possibleHeights[randomIndex];
                 }
             }
 
+            // Atualizar cristais
+            for (auto& c : crystals) {
+                c.Position.x -= obstacleSpeed * deltaTime;
+                if (c.Position.x + c.Size.x < 0) {
+                    c.Position.x = GenerateNonOverlappingX(SCR_WIDTH + 200.0f, SCR_WIDTH + 600.0f, obstacles, minDistance);
+
+                    float possibleHeights[] = {150.0f, 210.0f, 220.0f};
+                    int randomIndex = rand() % 3;
+                    c.Position.y = possibleHeights[randomIndex];
+                }
+            }
 
             // Checar colisão
             for (auto& obs : obstacles) {
                 if (elfa.CheckCollision(obs)) {
                     isHurt = true;
-                    // Troca animação para machucada
                     elfa.ChangeAnimation("../Textures/machucada.png", 6, 0.1f, 0, 384.0f, 64.0f);
-                    // A elfa morreu! Reinicia posição e pulo
-                    // elfa.Position = glm::vec2(150.0f, 150.0f);
-                    // isJumping = false;
-                    // verticalVelocity = 0.0f;
+                    break; 
+                }
+            }
 
-                    // // Reinicia obstáculos
-                    // for (auto& o : obstacles) o.Position.x = 600.0f;
-
-                    break; // não precisa checar outros obstáculos
+            // Checar colisão com os cristais
+            for (auto& c : crystals) {
+                if (elfa.CheckCollision(c)) {
+                    c.Position.x = SCR_WIDTH + 200 + (rand() % 400);
                 }
             }
         }  
@@ -234,6 +267,11 @@ int main() {
         // Desenhar obstáculos
         for (auto& obs : obstacles) {
             obs.Draw(mainShader);
+        }
+
+        // Desenhar os cristais
+        for (auto& c : crystals) {
+            c.Draw(mainShader);
         }
 
         glfwSwapBuffers(window);
