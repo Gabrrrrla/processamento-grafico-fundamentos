@@ -51,23 +51,6 @@ void processInput(GLFWwindow* window, Sprite& elfa) {
     }
 }
 
-float GenerateNonOverlappingX(float minX, float maxX, const std::vector<Sprite>& others, float minDistance) {
-    float x;
-    bool overlap;
-    do {
-        x = minX + (rand() % (int)(maxX - minX + 1));
-        overlap = false;
-        for (auto& s : others) {
-            if (fabs(x - s.Position.x) < minDistance) {
-                overlap = true;
-                break;
-            }
-        }
-    } while (overlap);
-    return x;
-}
-
-
 // Matriz de Projeção Ortográfica
 glm::mat4 projection = glm::ortho(0.0f, (float)SCR_WIDTH, 0.0f, (float)SCR_HEIGHT, -1.0f, 1.0f);
 
@@ -217,23 +200,77 @@ int main() {
             }
             
             // Atualizar obstáculos
-            for (auto& obs : obstacles) {
-                obs.Position.x -= obstacleSpeed * deltaTime;
-                if (obs.Position.x + obs.Size.x < 0) {
-                    obs.Position.x = GenerateNonOverlappingX(SCR_WIDTH + 200.0f, SCR_WIDTH + 600.0f, crystals, minDistance);
+                for (auto& obs : obstacles) {
+                    obs.Position.x -= obstacleSpeed * deltaTime;
 
+                    if (obs.Position.x + obs.Size.x < 0) {
+                        float newX;
+                        bool overlap;
+
+                        // Tenta gerar uma posição nova sem sobreposição
+                        do {
+                            newX = SCR_WIDTH + 200.0f + static_cast<float>(rand() % 400);
+                            overlap = false;
+
+                            // Checa contra outros obstáculos
+                            for (auto& other : obstacles) {
+                                if (&other != &obs && fabs(newX - other.Position.x) < 100.0f) {
+                                    overlap = true;
+                                    break;
+                                }
+                            }
+
+                        // Checa contra cristais
+                        for (auto& c : crystals) {
+                            if (fabs(newX - c.Position.x) < 100.0f) {
+                                overlap = true;
+                                break;
+                            }
+                        }
+                        } while (overlap);
+
+                    obs.Position.x = newX;
+
+                    // Altura aleatória
                     float possibleHeights[] = {150.0f, 195.0f, 210.0f};
                     int randomIndex = rand() % 3;
                     obs.Position.y = possibleHeights[randomIndex];
-                }
+                }   
             }
 
             // Atualizar cristais
             for (auto& c : crystals) {
                 c.Position.x -= obstacleSpeed * deltaTime;
-                if (c.Position.x + c.Size.x < 0) {
-                    c.Position.x = GenerateNonOverlappingX(SCR_WIDTH + 200.0f, SCR_WIDTH + 600.0f, obstacles, minDistance);
 
+                if (c.Position.x + c.Size.x < 0) {
+                    float newX;
+                    bool overlap;
+
+                    // Tenta gerar uma posição nova sem sobreposição
+                    do {
+                        newX = SCR_WIDTH + 200.0f + static_cast<float>(rand() % 400);
+                        overlap = false;
+
+                        // Checa contra outros cristais
+                        for (auto& other : crystals) {
+                            if (&other != &c && fabs(newX - other.Position.x) < 100.0f) {
+                                overlap = true;
+                                break;
+                            }
+                        }
+
+                        // Checa contra obstáculos
+                        for (auto& obs : obstacles) {
+                            if (fabs(newX - obs.Position.x) < 100.0f) {
+                                overlap = true;
+                                break;
+                            }
+                        }
+                    } while (overlap);
+
+                    c.Position.x = newX;
+
+                    // Altura aleatória
                     float possibleHeights[] = {150.0f, 210.0f, 220.0f};
                     int randomIndex = rand() % 3;
                     c.Position.y = possibleHeights[randomIndex];
