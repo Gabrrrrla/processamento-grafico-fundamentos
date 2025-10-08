@@ -52,10 +52,10 @@ RM = "C:\Program Files\CMake\bin\cmake.exe" -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA
+CMAKE_SOURCE_DIR = C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\build
+CMAKE_BINARY_DIR = C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\build
 
 # Utility rule file for uninstall.
 
@@ -66,7 +66,7 @@ include _deps/glfw-build/CMakeFiles/uninstall.dir/compiler_depend.make
 include _deps/glfw-build/CMakeFiles/uninstall.dir/progress.make
 
 _deps/glfw-build/CMakeFiles/uninstall:
-	cd /d C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\build\_deps\glfw-build && "C:\Program Files\CMake\bin\cmake.exe" -P C:/Users/Pichau/OneDrive/Documentos/Faculdade/pgf/PGF2025_2/TrabalhoGA/build/_deps/glfw-build/cmake_uninstall.cmake
+	cd /d C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\build\_deps\glfw-build && "C:\Program Files\CMake\bin\cmake.exe" -P C:/Users/Usuario/Documents/Unisinos/procgraf/processamento-grafico-fundamentos/TrabalhoGA/build/_deps/glfw-build/cmake_uninstall.cmake
 
 _deps/glfw-build/CMakeFiles/uninstall.dir/codegen:
 .PHONY : _deps/glfw-build/CMakeFiles/uninstall.dir/codegen
@@ -80,10 +80,10 @@ _deps/glfw-build/CMakeFiles/uninstall.dir/build: uninstall
 .PHONY : _deps/glfw-build/CMakeFiles/uninstall.dir/build
 
 _deps/glfw-build/CMakeFiles/uninstall.dir/clean:
-	cd /d C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\build\_deps\glfw-build && $(CMAKE_COMMAND) -P CMakeFiles\uninstall.dir\cmake_clean.cmake
+	cd /d C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\build\_deps\glfw-build && $(CMAKE_COMMAND) -P CMakeFiles\uninstall.dir\cmake_clean.cmake
 .PHONY : _deps/glfw-build/CMakeFiles/uninstall.dir/clean
 
 _deps/glfw-build/CMakeFiles/uninstall.dir/depend:
-	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\build\_deps\glfw-src C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\build C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\build\_deps\glfw-build C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\build\_deps\glfw-build\CMakeFiles\uninstall.dir\DependInfo.cmake "--color=$(COLOR)"
+	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\build\_deps\glfw-src C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\build C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\build\_deps\glfw-build C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\build\_deps\glfw-build\CMakeFiles\uninstall.dir\DependInfo.cmake "--color=$(COLOR)"
 .PHONY : _deps/glfw-build/CMakeFiles/uninstall.dir/depend
 

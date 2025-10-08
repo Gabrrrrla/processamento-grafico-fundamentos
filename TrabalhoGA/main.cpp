@@ -18,6 +18,7 @@ float duckHeight = 40.0f;
 float originalHeight;
 float verticalVelocity;
 float jumpForce; 
+
 std::vector<Sprite> obstacles;
 std::vector<Sprite> crystals;
 
@@ -78,7 +79,9 @@ int main() {
     verticalVelocity = 0.0f;
     jumpForce = 500.0f; 
     float gravity = -980.0f; 
-    isJumping = false; 
+    isJumping = false;  
+    float backgroundX = 0.0f; 
+    float backgroundSpeed = 100.0f; 
 
     glfwInit();
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
@@ -184,7 +187,6 @@ int main() {
                 for (auto& c : crystals) c.Position.x = 600.0f; //rever
 
                 elfa.ChangeAnimation("../Textures/correr.png", 8, 0.1f, 3, 512.0f, 256.0f, 64.0f, 64.0f);
-
                 isHurt = false;
             }
         }
@@ -253,13 +255,26 @@ int main() {
                     c.Position.x = SCR_WIDTH + 200 + (rand() % 400);
                 }
             }
-        }  
+            backgroundX -= backgroundSpeed * deltaTime;
+
+        // Se o primeiro background saiu da tela, reinicia a posição
+        if (backgroundX <= -background.Size.x) {
+            backgroundX = 0.0f;
+        }
+
+    }  
     
         glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
 
-        // Desenha o background
+        // Primeiro background
+        background.Position.x = backgroundX;
         background.Draw(mainShader);
+
+        // Segundo background, logo após o primeiro
+        background.Position.x = backgroundX + background.Size.x;
+        background.Draw(mainShader);
+
 
         // Desenhar a elfa
         elfa.Draw(mainShader);

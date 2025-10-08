@@ -1,2 +1,2 @@
-C:\msys64\ucrt64\bin\ar.exe qc libsoil2.a CMakeFiles/soil2.dir/src/SOIL2/image_DXT.c.obj CMakeFiles/soil2.dir/src/SOIL2/image_helper.c.obj CMakeFiles/soil2.dir/src/SOIL2/SOIL2.c.obj CMakeFiles/soil2.dir/src/SOIL2/wfETC.c.obj CMakeFiles/soil2.dir/src/common/common.cpp.obj
-C:\msys64\ucrt64\bin\ranlib.exe libsoil2.a
+C:\msys64\mingw64\bin\ar.exe qc libsoil2.a CMakeFiles/soil2.dir/src/SOIL2/image_DXT.c.obj CMakeFiles/soil2.dir/src/SOIL2/image_helper.c.obj CMakeFiles/soil2.dir/src/SOIL2/SOIL2.c.obj CMakeFiles/soil2.dir/src/SOIL2/wfETC.c.obj CMakeFiles/soil2.dir/src/common/common.cpp.obj
+C:\msys64\mingw64\bin\ranlib.exe libsoil2.a

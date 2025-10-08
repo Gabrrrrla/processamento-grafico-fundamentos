@@ -132,15 +132,15 @@
 			[
 				{
 					"backtrace" : 7,
-					"path" : "C:/Users/Pichau/OneDrive/Documentos/Faculdade/pgf/PGF2025_2/TrabalhoGA/build/_deps/glfw-src/include"
+					"path" : "C:/Users/Usuario/Documents/Unisinos/procgraf/processamento-grafico-fundamentos/TrabalhoGA/build/_deps/glfw-src/include"
 				},
 				{
 					"backtrace" : 8,
-					"path" : "C:/Users/Pichau/OneDrive/Documentos/Faculdade/pgf/PGF2025_2/TrabalhoGA/build/_deps/glfw-src/src"
+					"path" : "C:/Users/Usuario/Documents/Unisinos/procgraf/processamento-grafico-fundamentos/TrabalhoGA/build/_deps/glfw-src/src"
 				},
 				{
 					"backtrace" : 8,
-					"path" : "C:/Users/Pichau/OneDrive/Documentos/Faculdade/pgf/PGF2025_2/TrabalhoGA/build/_deps/glfw-build/src"
+					"path" : "C:/Users/Usuario/Documents/Unisinos/procgraf/processamento-grafico-fundamentos/TrabalhoGA/build/_deps/glfw-build/src"
 				}
 			],
 			"language" : "C",

@@ -1,9 +1,9 @@
 
-if (NOT EXISTS "C:/Users/Pichau/OneDrive/Documentos/Faculdade/pgf/PGF2025_2/TrabalhoGA/build/_deps/glfw-build/install_manifest.txt")
-    message(FATAL_ERROR "Cannot find install manifest: \"C:/Users/Pichau/OneDrive/Documentos/Faculdade/pgf/PGF2025_2/TrabalhoGA/build/_deps/glfw-build/install_manifest.txt\"")
+if (NOT EXISTS "C:/Users/Usuario/Documents/Unisinos/procgraf/processamento-grafico-fundamentos/TrabalhoGA/build/_deps/glfw-build/install_manifest.txt")
+    message(FATAL_ERROR "Cannot find install manifest: \"C:/Users/Usuario/Documents/Unisinos/procgraf/processamento-grafico-fundamentos/TrabalhoGA/build/_deps/glfw-build/install_manifest.txt\"")
 endif()
 
-file(READ "C:/Users/Pichau/OneDrive/Documentos/Faculdade/pgf/PGF2025_2/TrabalhoGA/build/_deps/glfw-build/install_manifest.txt" files)
+file(READ "C:/Users/Usuario/Documents/Unisinos/procgraf/processamento-grafico-fundamentos/TrabalhoGA/build/_deps/glfw-build/install_manifest.txt" files)
 string(REGEX REPLACE "\n" ";" files "${files}")
 
 foreach (file ${files})

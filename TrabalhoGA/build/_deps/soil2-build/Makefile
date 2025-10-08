@@ -56,10 +56,10 @@ RM = "C:\Program Files\CMake\bin\cmake.exe" -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA
+CMAKE_SOURCE_DIR = C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\build
+CMAKE_BINARY_DIR = C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -131,14 +131,14 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	cd /d C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\build && $(CMAKE_COMMAND) -E cmake_progress_start C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\build\CMakeFiles C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\build\_deps\soil2-build\\CMakeFiles\progress.marks
-	cd /d C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\build && $(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 _deps/soil2-build/all
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\build\CMakeFiles 0
+	cd /d C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\build && $(CMAKE_COMMAND) -E cmake_progress_start C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\build\CMakeFiles C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\build\_deps\soil2-build\\CMakeFiles\progress.marks
+	cd /d C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\build && $(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 _deps/soil2-build/all
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\build\CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /d C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\build && $(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 _deps/soil2-build/clean
+	cd /d C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\build && $(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 _deps/soil2-build/clean
 .PHONY : clean
 
 # The main clean target
@@ -147,22 +147,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /d C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\build && $(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 _deps/soil2-build/preinstall
+	cd /d C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\build && $(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 _deps/soil2-build/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /d C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\build && $(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 _deps/soil2-build/preinstall
+	cd /d C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\build && $(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 _deps/soil2-build/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /d C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles\Makefile.cmake 1
+	cd /d C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles\Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 _deps/soil2-build/CMakeFiles/soil2.dir/rule:
-	cd /d C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\build && $(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 _deps/soil2-build/CMakeFiles/soil2.dir/rule
+	cd /d C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\build && $(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 _deps/soil2-build/CMakeFiles/soil2.dir/rule
 .PHONY : _deps/soil2-build/CMakeFiles/soil2.dir/rule
 
 # Convenience name for target.
@@ -171,7 +171,7 @@ soil2: _deps/soil2-build/CMakeFiles/soil2.dir/rule
 
 # fast build rule for target.
 soil2/fast:
-	cd /d C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\build && $(MAKE) $(MAKESILENT) -f _deps\soil2-build\CMakeFiles\soil2.dir\build.make _deps/soil2-build/CMakeFiles/soil2.dir/build
+	cd /d C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\build && $(MAKE) $(MAKESILENT) -f _deps\soil2-build\CMakeFiles\soil2.dir\build.make _deps/soil2-build/CMakeFiles/soil2.dir/build
 .PHONY : soil2/fast
 
 src/SOIL2/SOIL2.obj: src/SOIL2/SOIL2.c.obj
@@ -179,7 +179,7 @@ src/SOIL2/SOIL2.obj: src/SOIL2/SOIL2.c.obj
 
 # target to build an object file
 src/SOIL2/SOIL2.c.obj:
-	cd /d C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\build && $(MAKE) $(MAKESILENT) -f _deps\soil2-build\CMakeFiles\soil2.dir\build.make _deps/soil2-build/CMakeFiles/soil2.dir/src/SOIL2/SOIL2.c.obj
+	cd /d C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\build && $(MAKE) $(MAKESILENT) -f _deps\soil2-build\CMakeFiles\soil2.dir\build.make _deps/soil2-build/CMakeFiles/soil2.dir/src/SOIL2/SOIL2.c.obj
 .PHONY : src/SOIL2/SOIL2.c.obj
 
 src/SOIL2/SOIL2.i: src/SOIL2/SOIL2.c.i
@@ -187,7 +187,7 @@ src/SOIL2/SOIL2.i: src/SOIL2/SOIL2.c.i
 
 # target to preprocess a source file
 src/SOIL2/SOIL2.c.i:
-	cd /d C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\build && $(MAKE) $(MAKESILENT) -f _deps\soil2-build\CMakeFiles\soil2.dir\build.make _deps/soil2-build/CMakeFiles/soil2.dir/src/SOIL2/SOIL2.c.i
+	cd /d C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\build && $(MAKE) $(MAKESILENT) -f _deps\soil2-build\CMakeFiles\soil2.dir\build.make _deps/soil2-build/CMakeFiles/soil2.dir/src/SOIL2/SOIL2.c.i
 .PHONY : src/SOIL2/SOIL2.c.i
 
 src/SOIL2/SOIL2.s: src/SOIL2/SOIL2.c.s
@@ -195,7 +195,7 @@ src/SOIL2/SOIL2.s: src/SOIL2/SOIL2.c.s
 
 # target to generate assembly for a file
 src/SOIL2/SOIL2.c.s:
-	cd /d C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\build && $(MAKE) $(MAKESILENT) -f _deps\soil2-build\CMakeFiles\soil2.dir\build.make _deps/soil2-build/CMakeFiles/soil2.dir/src/SOIL2/SOIL2.c.s
+	cd /d C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\build && $(MAKE) $(MAKESILENT) -f _deps\soil2-build\CMakeFiles\soil2.dir\build.make _deps/soil2-build/CMakeFiles/soil2.dir/src/SOIL2/SOIL2.c.s
 .PHONY : src/SOIL2/SOIL2.c.s
 
 src/SOIL2/image_DXT.obj: src/SOIL2/image_DXT.c.obj
@@ -203,7 +203,7 @@ src/SOIL2/image_DXT.obj: src/SOIL2/image_DXT.c.obj
 
 # target to build an object file
 src/SOIL2/image_DXT.c.obj:
-	cd /d C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\build && $(MAKE) $(MAKESILENT) -f _deps\soil2-build\CMakeFiles\soil2.dir\build.make _deps/soil2-build/CMakeFiles/soil2.dir/src/SOIL2/image_DXT.c.obj
+	cd /d C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\build && $(MAKE) $(MAKESILENT) -f _deps\soil2-build\CMakeFiles\soil2.dir\build.make _deps/soil2-build/CMakeFiles/soil2.dir/src/SOIL2/image_DXT.c.obj
 .PHONY : src/SOIL2/image_DXT.c.obj
 
 src/SOIL2/image_DXT.i: src/SOIL2/image_DXT.c.i
@@ -211,7 +211,7 @@ src/SOIL2/image_DXT.i: src/SOIL2/image_DXT.c.i
 
 # target to preprocess a source file
 src/SOIL2/image_DXT.c.i:
-	cd /d C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\build && $(MAKE) $(MAKESILENT) -f _deps\soil2-build\CMakeFiles\soil2.dir\build.make _deps/soil2-build/CMakeFiles/soil2.dir/src/SOIL2/image_DXT.c.i
+	cd /d C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\build && $(MAKE) $(MAKESILENT) -f _deps\soil2-build\CMakeFiles\soil2.dir\build.make _deps/soil2-build/CMakeFiles/soil2.dir/src/SOIL2/image_DXT.c.i
 .PHONY : src/SOIL2/image_DXT.c.i
 
 src/SOIL2/image_DXT.s: src/SOIL2/image_DXT.c.s
@@ -219,7 +219,7 @@ src/SOIL2/image_DXT.s: src/SOIL2/image_DXT.c.s
 
 # target to generate assembly for a file
 src/SOIL2/image_DXT.c.s:
-	cd /d C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\build && $(MAKE) $(MAKESILENT) -f _deps\soil2-build\CMakeFiles\soil2.dir\build.make _deps/soil2-build/CMakeFiles/soil2.dir/src/SOIL2/image_DXT.c.s
+	cd /d C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\build && $(MAKE) $(MAKESILENT) -f _deps\soil2-build\CMakeFiles\soil2.dir\build.make _deps/soil2-build/CMakeFiles/soil2.dir/src/SOIL2/image_DXT.c.s
 .PHONY : src/SOIL2/image_DXT.c.s
 
 src/SOIL2/image_helper.obj: src/SOIL2/image_helper.c.obj
@@ -227,7 +227,7 @@ src/SOIL2/image_helper.obj: src/SOIL2/image_helper.c.obj
 
 # target to build an object file
 src/SOIL2/image_helper.c.obj:
-	cd /d C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\build && $(MAKE) $(MAKESILENT) -f _deps\soil2-build\CMakeFiles\soil2.dir\build.make _deps/soil2-build/CMakeFiles/soil2.dir/src/SOIL2/image_helper.c.obj
+	cd /d C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\build && $(MAKE) $(MAKESILENT) -f _deps\soil2-build\CMakeFiles\soil2.dir\build.make _deps/soil2-build/CMakeFiles/soil2.dir/src/SOIL2/image_helper.c.obj
 .PHONY : src/SOIL2/image_helper.c.obj
 
 src/SOIL2/image_helper.i: src/SOIL2/image_helper.c.i
@@ -235,7 +235,7 @@ src/SOIL2/image_helper.i: src/SOIL2/image_helper.c.i
 
 # target to preprocess a source file
 src/SOIL2/image_helper.c.i:
-	cd /d C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\build && $(MAKE) $(MAKESILENT) -f _deps\soil2-build\CMakeFiles\soil2.dir\build.make _deps/soil2-build/CMakeFiles/soil2.dir/src/SOIL2/image_helper.c.i
+	cd /d C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\build && $(MAKE) $(MAKESILENT) -f _deps\soil2-build\CMakeFiles\soil2.dir\build.make _deps/soil2-build/CMakeFiles/soil2.dir/src/SOIL2/image_helper.c.i
 .PHONY : src/SOIL2/image_helper.c.i
 
 src/SOIL2/image_helper.s: src/SOIL2/image_helper.c.s
@@ -243,7 +243,7 @@ src/SOIL2/image_helper.s: src/SOIL2/image_helper.c.s
 
 # target to generate assembly for a file
 src/SOIL2/image_helper.c.s:
-	cd /d C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\build && $(MAKE) $(MAKESILENT) -f _deps\soil2-build\CMakeFiles\soil2.dir\build.make _deps/soil2-build/CMakeFiles/soil2.dir/src/SOIL2/image_helper.c.s
+	cd /d C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\build && $(MAKE) $(MAKESILENT) -f _deps\soil2-build\CMakeFiles\soil2.dir\build.make _deps/soil2-build/CMakeFiles/soil2.dir/src/SOIL2/image_helper.c.s
 .PHONY : src/SOIL2/image_helper.c.s
 
 src/SOIL2/wfETC.obj: src/SOIL2/wfETC.c.obj
@@ -251,7 +251,7 @@ src/SOIL2/wfETC.obj: src/SOIL2/wfETC.c.obj
 
 # target to build an object file
 src/SOIL2/wfETC.c.obj:
-	cd /d C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\build && $(MAKE) $(MAKESILENT) -f _deps\soil2-build\CMakeFiles\soil2.dir\build.make _deps/soil2-build/CMakeFiles/soil2.dir/src/SOIL2/wfETC.c.obj
+	cd /d C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\build && $(MAKE) $(MAKESILENT) -f _deps\soil2-build\CMakeFiles\soil2.dir\build.make _deps/soil2-build/CMakeFiles/soil2.dir/src/SOIL2/wfETC.c.obj
 .PHONY : src/SOIL2/wfETC.c.obj
 
 src/SOIL2/wfETC.i: src/SOIL2/wfETC.c.i
@@ -259,7 +259,7 @@ src/SOIL2/wfETC.i: src/SOIL2/wfETC.c.i
 
 # target to preprocess a source file
 src/SOIL2/wfETC.c.i:
-	cd /d C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\build && $(MAKE) $(MAKESILENT) -f _deps\soil2-build\CMakeFiles\soil2.dir\build.make _deps/soil2-build/CMakeFiles/soil2.dir/src/SOIL2/wfETC.c.i
+	cd /d C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\build && $(MAKE) $(MAKESILENT) -f _deps\soil2-build\CMakeFiles\soil2.dir\build.make _deps/soil2-build/CMakeFiles/soil2.dir/src/SOIL2/wfETC.c.i
 .PHONY : src/SOIL2/wfETC.c.i
 
 src/SOIL2/wfETC.s: src/SOIL2/wfETC.c.s
@@ -267,7 +267,7 @@ src/SOIL2/wfETC.s: src/SOIL2/wfETC.c.s
 
 # target to generate assembly for a file
 src/SOIL2/wfETC.c.s:
-	cd /d C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\build && $(MAKE) $(MAKESILENT) -f _deps\soil2-build\CMakeFiles\soil2.dir\build.make _deps/soil2-build/CMakeFiles/soil2.dir/src/SOIL2/wfETC.c.s
+	cd /d C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\build && $(MAKE) $(MAKESILENT) -f _deps\soil2-build\CMakeFiles\soil2.dir\build.make _deps/soil2-build/CMakeFiles/soil2.dir/src/SOIL2/wfETC.c.s
 .PHONY : src/SOIL2/wfETC.c.s
 
 src/common/common.obj: src/common/common.cpp.obj
@@ -275,7 +275,7 @@ src/common/common.obj: src/common/common.cpp.obj
 
 # target to build an object file
 src/common/common.cpp.obj:
-	cd /d C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\build && $(MAKE) $(MAKESILENT) -f _deps\soil2-build\CMakeFiles\soil2.dir\build.make _deps/soil2-build/CMakeFiles/soil2.dir/src/common/common.cpp.obj
+	cd /d C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\build && $(MAKE) $(MAKESILENT) -f _deps\soil2-build\CMakeFiles\soil2.dir\build.make _deps/soil2-build/CMakeFiles/soil2.dir/src/common/common.cpp.obj
 .PHONY : src/common/common.cpp.obj
 
 src/common/common.i: src/common/common.cpp.i
@@ -283,7 +283,7 @@ src/common/common.i: src/common/common.cpp.i
 
 # target to preprocess a source file
 src/common/common.cpp.i:
-	cd /d C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\build && $(MAKE) $(MAKESILENT) -f _deps\soil2-build\CMakeFiles\soil2.dir\build.make _deps/soil2-build/CMakeFiles/soil2.dir/src/common/common.cpp.i
+	cd /d C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\build && $(MAKE) $(MAKESILENT) -f _deps\soil2-build\CMakeFiles\soil2.dir\build.make _deps/soil2-build/CMakeFiles/soil2.dir/src/common/common.cpp.i
 .PHONY : src/common/common.cpp.i
 
 src/common/common.s: src/common/common.cpp.s
@@ -291,7 +291,7 @@ src/common/common.s: src/common/common.cpp.s
 
 # target to generate assembly for a file
 src/common/common.cpp.s:
-	cd /d C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\build && $(MAKE) $(MAKESILENT) -f _deps\soil2-build\CMakeFiles\soil2.dir\build.make _deps/soil2-build/CMakeFiles/soil2.dir/src/common/common.cpp.s
+	cd /d C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\build && $(MAKE) $(MAKESILENT) -f _deps\soil2-build\CMakeFiles\soil2.dir\build.make _deps/soil2-build/CMakeFiles/soil2.dir/src/common/common.cpp.s
 .PHONY : src/common/common.cpp.s
 
 # Help Target
@@ -333,6 +333,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /d C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles\Makefile.cmake 0
+	cd /d C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles\Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

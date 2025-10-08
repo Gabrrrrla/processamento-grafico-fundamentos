@@ -8,10 +8,10 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "C:/Users/Pichau/OneDrive/Documentos/Faculdade/pgf/PGF2025_2/TrabalhoGA/libs/glad.c" "CMakeFiles/main.dir/libs/glad.c.obj" "gcc" "CMakeFiles/main.dir/libs/glad.c.obj.d"
-  "C:/Users/Pichau/OneDrive/Documentos/Faculdade/pgf/PGF2025_2/TrabalhoGA/Classes/Shader.cpp" "CMakeFiles/main.dir/Classes/Shader.cpp.obj" "gcc" "CMakeFiles/main.dir/Classes/Shader.cpp.obj.d"
-  "C:/Users/Pichau/OneDrive/Documentos/Faculdade/pgf/PGF2025_2/TrabalhoGA/Classes/Sprite.cpp" "CMakeFiles/main.dir/Classes/Sprite.cpp.obj" "gcc" "CMakeFiles/main.dir/Classes/Sprite.cpp.obj.d"
-  "C:/Users/Pichau/OneDrive/Documentos/Faculdade/pgf/PGF2025_2/TrabalhoGA/main.cpp" "CMakeFiles/main.dir/main.cpp.obj" "gcc" "CMakeFiles/main.dir/main.cpp.obj.d"
+  "C:/Users/Usuario/Documents/Unisinos/procgraf/processamento-grafico-fundamentos/TrabalhoGA/libs/glad.c" "CMakeFiles/main.dir/libs/glad.c.obj" "gcc" "CMakeFiles/main.dir/libs/glad.c.obj.d"
+  "C:/Users/Usuario/Documents/Unisinos/procgraf/processamento-grafico-fundamentos/TrabalhoGA/Classes/Shader.cpp" "CMakeFiles/main.dir/Classes/Shader.cpp.obj" "gcc" "CMakeFiles/main.dir/Classes/Shader.cpp.obj.d"
+  "C:/Users/Usuario/Documents/Unisinos/procgraf/processamento-grafico-fundamentos/TrabalhoGA/Classes/Sprite.cpp" "CMakeFiles/main.dir/Classes/Sprite.cpp.obj" "gcc" "CMakeFiles/main.dir/Classes/Sprite.cpp.obj.d"
+  "C:/Users/Usuario/Documents/Unisinos/procgraf/processamento-grafico-fundamentos/TrabalhoGA/main.cpp" "CMakeFiles/main.dir/main.cpp.obj" "gcc" "CMakeFiles/main.dir/main.cpp.obj.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

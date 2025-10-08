@@ -52,10 +52,10 @@ RM = "C:\Program Files\CMake\bin\cmake.exe" -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA
+CMAKE_SOURCE_DIR = C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\build
+CMAKE_BINARY_DIR = C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\build
 
 # Include any dependencies generated for this target.
 include _deps/soil2-build/CMakeFiles/soil2.dir/depend.make
@@ -75,76 +75,76 @@ _deps/soil2-build/CMakeFiles/soil2.dir/src/SOIL2/image_DXT.c.obj: _deps/soil2-bu
 _deps/soil2-build/CMakeFiles/soil2.dir/src/SOIL2/image_DXT.c.obj: _deps/soil2-build/CMakeFiles/soil2.dir/includes_C.rsp
 _deps/soil2-build/CMakeFiles/soil2.dir/src/SOIL2/image_DXT.c.obj: _deps/soil2-src/src/SOIL2/image_DXT.c
 _deps/soil2-build/CMakeFiles/soil2.dir/src/SOIL2/image_DXT.c.obj: _deps/soil2-build/CMakeFiles/soil2.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object _deps/soil2-build/CMakeFiles/soil2.dir/src/SOIL2/image_DXT.c.obj"
-	cd /d C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\build\_deps\soil2-build && C:\msys64\ucrt64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT _deps/soil2-build/CMakeFiles/soil2.dir/src/SOIL2/image_DXT.c.obj -MF CMakeFiles\soil2.dir\src\SOIL2\image_DXT.c.obj.d -o CMakeFiles\soil2.dir\src\SOIL2\image_DXT.c.obj -c C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\build\_deps\soil2-src\src\SOIL2\image_DXT.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object _deps/soil2-build/CMakeFiles/soil2.dir/src/SOIL2/image_DXT.c.obj"
+	cd /d C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\build\_deps\soil2-build && C:\msys64\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT _deps/soil2-build/CMakeFiles/soil2.dir/src/SOIL2/image_DXT.c.obj -MF CMakeFiles\soil2.dir\src\SOIL2\image_DXT.c.obj.d -o CMakeFiles\soil2.dir\src\SOIL2\image_DXT.c.obj -c C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\build\_deps\soil2-src\src\SOIL2\image_DXT.c
 
 _deps/soil2-build/CMakeFiles/soil2.dir/src/SOIL2/image_DXT.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/soil2.dir/src/SOIL2/image_DXT.c.i"
-	cd /d C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\build\_deps\soil2-build && C:\msys64\ucrt64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\build\_deps\soil2-src\src\SOIL2\image_DXT.c > CMakeFiles\soil2.dir\src\SOIL2\image_DXT.c.i
+	cd /d C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\build\_deps\soil2-build && C:\msys64\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\build\_deps\soil2-src\src\SOIL2\image_DXT.c > CMakeFiles\soil2.dir\src\SOIL2\image_DXT.c.i
 
 _deps/soil2-build/CMakeFiles/soil2.dir/src/SOIL2/image_DXT.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/soil2.dir/src/SOIL2/image_DXT.c.s"
-	cd /d C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\build\_deps\soil2-build && C:\msys64\ucrt64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\build\_deps\soil2-src\src\SOIL2\image_DXT.c -o CMakeFiles\soil2.dir\src\SOIL2\image_DXT.c.s
+	cd /d C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\build\_deps\soil2-build && C:\msys64\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\build\_deps\soil2-src\src\SOIL2\image_DXT.c -o CMakeFiles\soil2.dir\src\SOIL2\image_DXT.c.s
 
 _deps/soil2-build/CMakeFiles/soil2.dir/src/SOIL2/image_helper.c.obj: _deps/soil2-build/CMakeFiles/soil2.dir/flags.make
 _deps/soil2-build/CMakeFiles/soil2.dir/src/SOIL2/image_helper.c.obj: _deps/soil2-build/CMakeFiles/soil2.dir/includes_C.rsp
 _deps/soil2-build/CMakeFiles/soil2.dir/src/SOIL2/image_helper.c.obj: _deps/soil2-src/src/SOIL2/image_helper.c
 _deps/soil2-build/CMakeFiles/soil2.dir/src/SOIL2/image_helper.c.obj: _deps/soil2-build/CMakeFiles/soil2.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object _deps/soil2-build/CMakeFiles/soil2.dir/src/SOIL2/image_helper.c.obj"
-	cd /d C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\build\_deps\soil2-build && C:\msys64\ucrt64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT _deps/soil2-build/CMakeFiles/soil2.dir/src/SOIL2/image_helper.c.obj -MF CMakeFiles\soil2.dir\src\SOIL2\image_helper.c.obj.d -o CMakeFiles\soil2.dir\src\SOIL2\image_helper.c.obj -c C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\build\_deps\soil2-src\src\SOIL2\image_helper.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object _deps/soil2-build/CMakeFiles/soil2.dir/src/SOIL2/image_helper.c.obj"
+	cd /d C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\build\_deps\soil2-build && C:\msys64\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT _deps/soil2-build/CMakeFiles/soil2.dir/src/SOIL2/image_helper.c.obj -MF CMakeFiles\soil2.dir\src\SOIL2\image_helper.c.obj.d -o CMakeFiles\soil2.dir\src\SOIL2\image_helper.c.obj -c C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\build\_deps\soil2-src\src\SOIL2\image_helper.c
 
 _deps/soil2-build/CMakeFiles/soil2.dir/src/SOIL2/image_helper.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/soil2.dir/src/SOIL2/image_helper.c.i"
-	cd /d C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\build\_deps\soil2-build && C:\msys64\ucrt64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\build\_deps\soil2-src\src\SOIL2\image_helper.c > CMakeFiles\soil2.dir\src\SOIL2\image_helper.c.i
+	cd /d C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\build\_deps\soil2-build && C:\msys64\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\build\_deps\soil2-src\src\SOIL2\image_helper.c > CMakeFiles\soil2.dir\src\SOIL2\image_helper.c.i
 
 _deps/soil2-build/CMakeFiles/soil2.dir/src/SOIL2/image_helper.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/soil2.dir/src/SOIL2/image_helper.c.s"
-	cd /d C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\build\_deps\soil2-build && C:\msys64\ucrt64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\build\_deps\soil2-src\src\SOIL2\image_helper.c -o CMakeFiles\soil2.dir\src\SOIL2\image_helper.c.s
+	cd /d C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\build\_deps\soil2-build && C:\msys64\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\build\_deps\soil2-src\src\SOIL2\image_helper.c -o CMakeFiles\soil2.dir\src\SOIL2\image_helper.c.s
 
 _deps/soil2-build/CMakeFiles/soil2.dir/src/SOIL2/SOIL2.c.obj: _deps/soil2-build/CMakeFiles/soil2.dir/flags.make
 _deps/soil2-build/CMakeFiles/soil2.dir/src/SOIL2/SOIL2.c.obj: _deps/soil2-build/CMakeFiles/soil2.dir/includes_C.rsp
 _deps/soil2-build/CMakeFiles/soil2.dir/src/SOIL2/SOIL2.c.obj: _deps/soil2-src/src/SOIL2/SOIL2.c
 _deps/soil2-build/CMakeFiles/soil2.dir/src/SOIL2/SOIL2.c.obj: _deps/soil2-build/CMakeFiles/soil2.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object _deps/soil2-build/CMakeFiles/soil2.dir/src/SOIL2/SOIL2.c.obj"
-	cd /d C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\build\_deps\soil2-build && C:\msys64\ucrt64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT _deps/soil2-build/CMakeFiles/soil2.dir/src/SOIL2/SOIL2.c.obj -MF CMakeFiles\soil2.dir\src\SOIL2\SOIL2.c.obj.d -o CMakeFiles\soil2.dir\src\SOIL2\SOIL2.c.obj -c C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\build\_deps\soil2-src\src\SOIL2\SOIL2.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object _deps/soil2-build/CMakeFiles/soil2.dir/src/SOIL2/SOIL2.c.obj"
+	cd /d C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\build\_deps\soil2-build && C:\msys64\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT _deps/soil2-build/CMakeFiles/soil2.dir/src/SOIL2/SOIL2.c.obj -MF CMakeFiles\soil2.dir\src\SOIL2\SOIL2.c.obj.d -o CMakeFiles\soil2.dir\src\SOIL2\SOIL2.c.obj -c C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\build\_deps\soil2-src\src\SOIL2\SOIL2.c
 
 _deps/soil2-build/CMakeFiles/soil2.dir/src/SOIL2/SOIL2.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/soil2.dir/src/SOIL2/SOIL2.c.i"
-	cd /d C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\build\_deps\soil2-build && C:\msys64\ucrt64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\build\_deps\soil2-src\src\SOIL2\SOIL2.c > CMakeFiles\soil2.dir\src\SOIL2\SOIL2.c.i
+	cd /d C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\build\_deps\soil2-build && C:\msys64\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\build\_deps\soil2-src\src\SOIL2\SOIL2.c > CMakeFiles\soil2.dir\src\SOIL2\SOIL2.c.i
 
 _deps/soil2-build/CMakeFiles/soil2.dir/src/SOIL2/SOIL2.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/soil2.dir/src/SOIL2/SOIL2.c.s"
-	cd /d C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\build\_deps\soil2-build && C:\msys64\ucrt64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\build\_deps\soil2-src\src\SOIL2\SOIL2.c -o CMakeFiles\soil2.dir\src\SOIL2\SOIL2.c.s
+	cd /d C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\build\_deps\soil2-build && C:\msys64\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\build\_deps\soil2-src\src\SOIL2\SOIL2.c -o CMakeFiles\soil2.dir\src\SOIL2\SOIL2.c.s
 
 _deps/soil2-build/CMakeFiles/soil2.dir/src/SOIL2/wfETC.c.obj: _deps/soil2-build/CMakeFiles/soil2.dir/flags.make
 _deps/soil2-build/CMakeFiles/soil2.dir/src/SOIL2/wfETC.c.obj: _deps/soil2-build/CMakeFiles/soil2.dir/includes_C.rsp
 _deps/soil2-build/CMakeFiles/soil2.dir/src/SOIL2/wfETC.c.obj: _deps/soil2-src/src/SOIL2/wfETC.c
 _deps/soil2-build/CMakeFiles/soil2.dir/src/SOIL2/wfETC.c.obj: _deps/soil2-build/CMakeFiles/soil2.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object _deps/soil2-build/CMakeFiles/soil2.dir/src/SOIL2/wfETC.c.obj"
-	cd /d C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\build\_deps\soil2-build && C:\msys64\ucrt64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT _deps/soil2-build/CMakeFiles/soil2.dir/src/SOIL2/wfETC.c.obj -MF CMakeFiles\soil2.dir\src\SOIL2\wfETC.c.obj.d -o CMakeFiles\soil2.dir\src\SOIL2\wfETC.c.obj -c C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\build\_deps\soil2-src\src\SOIL2\wfETC.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object _deps/soil2-build/CMakeFiles/soil2.dir/src/SOIL2/wfETC.c.obj"
+	cd /d C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\build\_deps\soil2-build && C:\msys64\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT _deps/soil2-build/CMakeFiles/soil2.dir/src/SOIL2/wfETC.c.obj -MF CMakeFiles\soil2.dir\src\SOIL2\wfETC.c.obj.d -o CMakeFiles\soil2.dir\src\SOIL2\wfETC.c.obj -c C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\build\_deps\soil2-src\src\SOIL2\wfETC.c
 
 _deps/soil2-build/CMakeFiles/soil2.dir/src/SOIL2/wfETC.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/soil2.dir/src/SOIL2/wfETC.c.i"
-	cd /d C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\build\_deps\soil2-build && C:\msys64\ucrt64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\build\_deps\soil2-src\src\SOIL2\wfETC.c > CMakeFiles\soil2.dir\src\SOIL2\wfETC.c.i
+	cd /d C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\build\_deps\soil2-build && C:\msys64\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\build\_deps\soil2-src\src\SOIL2\wfETC.c > CMakeFiles\soil2.dir\src\SOIL2\wfETC.c.i
 
 _deps/soil2-build/CMakeFiles/soil2.dir/src/SOIL2/wfETC.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/soil2.dir/src/SOIL2/wfETC.c.s"
-	cd /d C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\build\_deps\soil2-build && C:\msys64\ucrt64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\build\_deps\soil2-src\src\SOIL2\wfETC.c -o CMakeFiles\soil2.dir\src\SOIL2\wfETC.c.s
+	cd /d C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\build\_deps\soil2-build && C:\msys64\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\build\_deps\soil2-src\src\SOIL2\wfETC.c -o CMakeFiles\soil2.dir\src\SOIL2\wfETC.c.s
 
 _deps/soil2-build/CMakeFiles/soil2.dir/src/common/common.cpp.obj: _deps/soil2-build/CMakeFiles/soil2.dir/flags.make
 _deps/soil2-build/CMakeFiles/soil2.dir/src/common/common.cpp.obj: _deps/soil2-build/CMakeFiles/soil2.dir/includes_CXX.rsp
 _deps/soil2-build/CMakeFiles/soil2.dir/src/common/common.cpp.obj: _deps/soil2-src/src/common/common.cpp
 _deps/soil2-build/CMakeFiles/soil2.dir/src/common/common.cpp.obj: _deps/soil2-build/CMakeFiles/soil2.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object _deps/soil2-build/CMakeFiles/soil2.dir/src/common/common.cpp.obj"
-	cd /d C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\build\_deps\soil2-build && C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT _deps/soil2-build/CMakeFiles/soil2.dir/src/common/common.cpp.obj -MF CMakeFiles\soil2.dir\src\common\common.cpp.obj.d -o CMakeFiles\soil2.dir\src\common\common.cpp.obj -c C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\build\_deps\soil2-src\src\common\common.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object _deps/soil2-build/CMakeFiles/soil2.dir/src/common/common.cpp.obj"
+	cd /d C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\build\_deps\soil2-build && C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT _deps/soil2-build/CMakeFiles/soil2.dir/src/common/common.cpp.obj -MF CMakeFiles\soil2.dir\src\common\common.cpp.obj.d -o CMakeFiles\soil2.dir\src\common\common.cpp.obj -c C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\build\_deps\soil2-src\src\common\common.cpp
 
 _deps/soil2-build/CMakeFiles/soil2.dir/src/common/common.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/soil2.dir/src/common/common.cpp.i"
-	cd /d C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\build\_deps\soil2-build && C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\build\_deps\soil2-src\src\common\common.cpp > CMakeFiles\soil2.dir\src\common\common.cpp.i
+	cd /d C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\build\_deps\soil2-build && C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\build\_deps\soil2-src\src\common\common.cpp > CMakeFiles\soil2.dir\src\common\common.cpp.i
 
 _deps/soil2-build/CMakeFiles/soil2.dir/src/common/common.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/soil2.dir/src/common/common.cpp.s"
-	cd /d C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\build\_deps\soil2-build && C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\build\_deps\soil2-src\src\common\common.cpp -o CMakeFiles\soil2.dir\src\common\common.cpp.s
+	cd /d C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\build\_deps\soil2-build && C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\build\_deps\soil2-src\src\common\common.cpp -o CMakeFiles\soil2.dir\src\common\common.cpp.s
 
 # Object files for target soil2
 soil2_OBJECTS = \
@@ -164,19 +164,19 @@ _deps/soil2-build/libsoil2.a: _deps/soil2-build/CMakeFiles/soil2.dir/src/SOIL2/w
 _deps/soil2-build/libsoil2.a: _deps/soil2-build/CMakeFiles/soil2.dir/src/common/common.cpp.obj
 _deps/soil2-build/libsoil2.a: _deps/soil2-build/CMakeFiles/soil2.dir/build.make
 _deps/soil2-build/libsoil2.a: _deps/soil2-build/CMakeFiles/soil2.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX static library libsoil2.a"
-	cd /d C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\build\_deps\soil2-build && $(CMAKE_COMMAND) -P CMakeFiles\soil2.dir\cmake_clean_target.cmake
-	cd /d C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\build\_deps\soil2-build && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\soil2.dir\link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX static library libsoil2.a"
+	cd /d C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\build\_deps\soil2-build && $(CMAKE_COMMAND) -P CMakeFiles\soil2.dir\cmake_clean_target.cmake
+	cd /d C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\build\_deps\soil2-build && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\soil2.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 _deps/soil2-build/CMakeFiles/soil2.dir/build: _deps/soil2-build/libsoil2.a
 .PHONY : _deps/soil2-build/CMakeFiles/soil2.dir/build
 
 _deps/soil2-build/CMakeFiles/soil2.dir/clean:
-	cd /d C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\build\_deps\soil2-build && $(CMAKE_COMMAND) -P CMakeFiles\soil2.dir\cmake_clean.cmake
+	cd /d C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\build\_deps\soil2-build && $(CMAKE_COMMAND) -P CMakeFiles\soil2.dir\cmake_clean.cmake
 .PHONY : _deps/soil2-build/CMakeFiles/soil2.dir/clean
 
 _deps/soil2-build/CMakeFiles/soil2.dir/depend:
-	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\build\_deps\soil2-src C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\build C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\build\_deps\soil2-build C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\build\_deps\soil2-build\CMakeFiles\soil2.dir\DependInfo.cmake "--color=$(COLOR)"
+	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\build\_deps\soil2-src C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\build C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\build\_deps\soil2-build C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\build\_deps\soil2-build\CMakeFiles\soil2.dir\DependInfo.cmake "--color=$(COLOR)"
 .PHONY : _deps/soil2-build/CMakeFiles/soil2.dir/depend
 
