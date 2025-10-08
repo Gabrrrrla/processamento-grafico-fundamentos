@@ -1,7 +1,6 @@
 #include "Shader.h"
 
 Shader::Shader(const char* vertexPath, const char* fragmentPath) {
-    // 1. Recuperar o código-fonte dos shaders
     std::string vertexCode;
     std::string fragmentCode;
     std::ifstream vShaderFile;
@@ -24,8 +23,6 @@ Shader::Shader(const char* vertexPath, const char* fragmentPath) {
     }
     const char* vShaderCode = vertexCode.c_str();
     const char* fShaderCode = fragmentCode.c_str();
-
-    // 2. Compilar shaders
     unsigned int vertex, fragment;
     int success;
     char infoLog[512];

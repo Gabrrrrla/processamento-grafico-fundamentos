@@ -36,7 +36,7 @@ void processInput(GLFWwindow* window, Sprite& elfa) {
         && !isJumping) {
         if (!isDucking) {
             isDucking = true;
-            elfa.Size.y = duckHeight;  // abaixa a elfa
+            elfa.Size.y = duckHeight;  // Abaixa a elfa
             elfa.Position.y = 150.0f;
             elfa.ChangeAnimation("../Textures/abaixar.png", 3, 0.1f, 3, 192.0f, 256.0f, 64.0f, 64.0f); 
         }
@@ -59,13 +59,13 @@ int main() {
     float movementSpeed = 200.0f; 
     float lastFrame = 0.0f;
     float deltaTime = 0.0f;
-    verticalVelocity = 0.0f;
-    jumpForce = 500.0f; 
     float gravity = -980.0f; 
-    isJumping = false;  
     float backgroundX = 0.0f; 
     float backgroundSpeed = 100.0f; 
-
+    jumpForce = 500.0f;
+    isJumping = false; 
+    verticalVelocity = 0.0f;
+    
     glfwInit();
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
@@ -86,6 +86,12 @@ int main() {
         return -1;
     }
 
+    /* 
+    Ativa transparência para sprites.
+    Cria e usa o shader principal.
+    Passa a matriz de projeção para o shader.
+    Diz qual unidade de textura o shader deve usar.
+    */
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
@@ -125,7 +131,7 @@ int main() {
     );
     originalHeight = elfa.Size.y;
 
-    // Criação dos obstáculos ruins (troncos)
+    // Criação dos obstáculos "ruins" (troncos)
     obstacles.push_back(Sprite
         (
             glm::vec2(600.0f, 150.0f), 
@@ -137,7 +143,7 @@ int main() {
         )
     );
 
-    // Criação dos obstáculos bons (cristais)
+    // Criação dos obstáculos "bons" (cristais)
     crystals.push_back(Sprite
         (
             glm::vec2(200.0f, 150.0f), 
@@ -152,12 +158,15 @@ int main() {
     // Loop principal
     while (!glfwWindowShouldClose(window)) {
         float currentFrame = (float)glfwGetTime();
-        deltaTime = currentFrame - lastFrame;
-        lastFrame = currentFrame;
         float obstacleSpeed = 250.0f;
         float minDistance = 100.0f;
+        deltaTime = currentFrame - lastFrame;
+        lastFrame = currentFrame;
+        backgroundX -= backgroundSpeed * deltaTime;
 
+        // Chama a função que faz a animação da elfa avançar quadro a quadro, usando o tempo que passou
         elfa.UpdateAnimation(deltaTime);
+
         if(isHurt){
             // Espera a animação "machucada" terminar
             if (elfa.currentFrame == elfa.numFrames - 1) {
@@ -167,7 +176,7 @@ int main() {
 
                 // Resetar obstáculos
                 for (auto& o : obstacles) o.Position.x = 600.0f;
-                for (auto& c : crystals) c.Position.x = 600.0f; //rever
+                for (auto& c : crystals) c.Position.x = 600.0f; 
 
                 elfa.ChangeAnimation("../Textures/correr.png", 8, 0.1f, 3, 512.0f, 256.0f, 64.0f, 64.0f);
                 isHurt = false;
@@ -292,15 +301,16 @@ int main() {
                     c.Position.x = SCR_WIDTH + 200 + (rand() % 400);
                 }
             }
-            backgroundX -= backgroundSpeed * deltaTime;
 
-        // Se o primeiro background saiu da tela, reinicia a posição
+        // Se o primeiro background saiu da tela, reinicia a posição (loop horizontal)
         if (backgroundX <= -background.Size.x) {
             backgroundX = 0.0f;
         }
 
     }  
     
+        // Parte da renderização
+
         glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
 
@@ -312,11 +322,10 @@ int main() {
         background.Position.x = backgroundX + background.Size.x;
         background.Draw(mainShader);
 
-
         // Desenhar a elfa
         elfa.Draw(mainShader);
 
-        // Desenhar obstáculos
+        // Desenhar troncos
         for (auto& obs : obstacles) {
             obs.Draw(mainShader);
         }
@@ -326,6 +335,10 @@ int main() {
             c.Draw(mainShader);
         }
 
+        /*
+        glfwSwapBuffers troca o buffer de vídeo e
+        glfwPollEvents lê os eventos da janela (teclado, mouse, fechar janela).
+        */
         glfwSwapBuffers(window);
         glfwPollEvents();
     }
