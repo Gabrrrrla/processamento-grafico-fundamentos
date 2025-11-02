@@ -76,27 +76,27 @@
 			[
 				{
 					"backtrace" : 5,
-					"path" : "C:/Users/Pichau/OneDrive/Documentos/Faculdade/pgf/PGF2025_2/TrabalhoGA/libs"
+					"path" : "C:/Users/Usuario/Documents/Unisinos/procgraf/processamento-grafico-fundamentos/TrabalhoGA/libs"
 				},
 				{
 					"backtrace" : 6,
-					"path" : "C:/Users/Pichau/OneDrive/Documentos/Faculdade/pgf/PGF2025_2/TrabalhoGA/build/_deps/glm-src"
+					"path" : "C:/Users/Usuario/Documents/Unisinos/procgraf/processamento-grafico-fundamentos/TrabalhoGA/build/_deps/glm-src"
 				},
 				{
 					"backtrace" : 6,
-					"path" : "C:/Users/Pichau/OneDrive/Documentos/Faculdade/pgf/PGF2025_2/TrabalhoGA/build/_deps/stb_image-src"
+					"path" : "C:/Users/Usuario/Documents/Unisinos/procgraf/processamento-grafico-fundamentos/TrabalhoGA/build/_deps/stb_image-src"
 				},
 				{
 					"backtrace" : 6,
-					"path" : "C:/Users/Pichau/OneDrive/Documentos/Faculdade/pgf/PGF2025_2/TrabalhoGA/build/_deps/soil2-src/src/SOIL2"
+					"path" : "C:/Users/Usuario/Documents/Unisinos/procgraf/processamento-grafico-fundamentos/TrabalhoGA/build/_deps/soil2-src/src/SOIL2"
 				},
 				{
 					"backtrace" : 2,
-					"path" : "C:/Users/Pichau/OneDrive/Documentos/Faculdade/pgf/PGF2025_2/TrabalhoGA/build/_deps/glfw-src/include"
+					"path" : "C:/Users/Usuario/Documents/Unisinos/procgraf/processamento-grafico-fundamentos/TrabalhoGA/build/_deps/glfw-src/include"
 				},
 				{
 					"backtrace" : 2,
-					"path" : "C:/Users/Pichau/OneDrive/Documentos/Faculdade/pgf/PGF2025_2/TrabalhoGA/build/_deps/soil2-src/src/common"
+					"path" : "C:/Users/Usuario/Documents/Unisinos/procgraf/processamento-grafico-fundamentos/TrabalhoGA/build/_deps/soil2-src/src/common"
 				}
 			],
 			"language" : "CXX",
@@ -126,27 +126,27 @@
 			[
 				{
 					"backtrace" : 5,
-					"path" : "C:/Users/Pichau/OneDrive/Documentos/Faculdade/pgf/PGF2025_2/TrabalhoGA/libs"
+					"path" : "C:/Users/Usuario/Documents/Unisinos/procgraf/processamento-grafico-fundamentos/TrabalhoGA/libs"
 				},
 				{
 					"backtrace" : 6,
-					"path" : "C:/Users/Pichau/OneDrive/Documentos/Faculdade/pgf/PGF2025_2/TrabalhoGA/build/_deps/glm-src"
+					"path" : "C:/Users/Usuario/Documents/Unisinos/procgraf/processamento-grafico-fundamentos/TrabalhoGA/build/_deps/glm-src"
 				},
 				{
 					"backtrace" : 6,
-					"path" : "C:/Users/Pichau/OneDrive/Documentos/Faculdade/pgf/PGF2025_2/TrabalhoGA/build/_deps/stb_image-src"
+					"path" : "C:/Users/Usuario/Documents/Unisinos/procgraf/processamento-grafico-fundamentos/TrabalhoGA/build/_deps/stb_image-src"
 				},
 				{
 					"backtrace" : 6,
-					"path" : "C:/Users/Pichau/OneDrive/Documentos/Faculdade/pgf/PGF2025_2/TrabalhoGA/build/_deps/soil2-src/src/SOIL2"
+					"path" : "C:/Users/Usuario/Documents/Unisinos/procgraf/processamento-grafico-fundamentos/TrabalhoGA/build/_deps/soil2-src/src/SOIL2"
 				},
 				{
 					"backtrace" : 2,
-					"path" : "C:/Users/Pichau/OneDrive/Documentos/Faculdade/pgf/PGF2025_2/TrabalhoGA/build/_deps/glfw-src/include"
+					"path" : "C:/Users/Usuario/Documents/Unisinos/procgraf/processamento-grafico-fundamentos/TrabalhoGA/build/_deps/glfw-src/include"
 				},
 				{
 					"backtrace" : 2,
-					"path" : "C:/Users/Pichau/OneDrive/Documentos/Faculdade/pgf/PGF2025_2/TrabalhoGA/build/_deps/soil2-src/src/common"
+					"path" : "C:/Users/Usuario/Documents/Unisinos/procgraf/processamento-grafico-fundamentos/TrabalhoGA/build/_deps/soil2-src/src/common"
 				}
 			],
 			"language" : "C",

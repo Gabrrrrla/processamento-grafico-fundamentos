@@ -52,10 +52,10 @@ RM = "C:\Program Files\CMake\bin\cmake.exe" -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA
+CMAKE_SOURCE_DIR = C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\build
+CMAKE_BINARY_DIR = C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/main.dir/depend.make
@@ -73,63 +73,63 @@ CMakeFiles/main.dir/codegen:
 
 CMakeFiles/main.dir/Classes/Shader.cpp.obj: CMakeFiles/main.dir/flags.make
 CMakeFiles/main.dir/Classes/Shader.cpp.obj: CMakeFiles/main.dir/includes_CXX.rsp
-CMakeFiles/main.dir/Classes/Shader.cpp.obj: C:/Users/Pichau/OneDrive/Documentos/Faculdade/pgf/PGF2025_2/TrabalhoGA/Classes/Shader.cpp
+CMakeFiles/main.dir/Classes/Shader.cpp.obj: C:/Users/Usuario/Documents/Unisinos/procgraf/processamento-grafico-fundamentos/TrabalhoGA/Classes/Shader.cpp
 CMakeFiles/main.dir/Classes/Shader.cpp.obj: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/main.dir/Classes/Shader.cpp.obj"
-	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/Classes/Shader.cpp.obj -MF CMakeFiles\main.dir\Classes\Shader.cpp.obj.d -o CMakeFiles\main.dir\Classes\Shader.cpp.obj -c C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\Classes\Shader.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/main.dir/Classes/Shader.cpp.obj"
+	C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/Classes/Shader.cpp.obj -MF CMakeFiles\main.dir\Classes\Shader.cpp.obj.d -o CMakeFiles\main.dir\Classes\Shader.cpp.obj -c C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\Classes\Shader.cpp
 
 CMakeFiles/main.dir/Classes/Shader.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/main.dir/Classes/Shader.cpp.i"
-	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\Classes\Shader.cpp > CMakeFiles\main.dir\Classes\Shader.cpp.i
+	C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\Classes\Shader.cpp > CMakeFiles\main.dir\Classes\Shader.cpp.i
 
 CMakeFiles/main.dir/Classes/Shader.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/main.dir/Classes/Shader.cpp.s"
-	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\Classes\Shader.cpp -o CMakeFiles\main.dir\Classes\Shader.cpp.s
+	C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\Classes\Shader.cpp -o CMakeFiles\main.dir\Classes\Shader.cpp.s
 
 CMakeFiles/main.dir/Classes/Sprite.cpp.obj: CMakeFiles/main.dir/flags.make
 CMakeFiles/main.dir/Classes/Sprite.cpp.obj: CMakeFiles/main.dir/includes_CXX.rsp
-CMakeFiles/main.dir/Classes/Sprite.cpp.obj: C:/Users/Pichau/OneDrive/Documentos/Faculdade/pgf/PGF2025_2/TrabalhoGA/Classes/Sprite.cpp
+CMakeFiles/main.dir/Classes/Sprite.cpp.obj: C:/Users/Usuario/Documents/Unisinos/procgraf/processamento-grafico-fundamentos/TrabalhoGA/Classes/Sprite.cpp
 CMakeFiles/main.dir/Classes/Sprite.cpp.obj: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/main.dir/Classes/Sprite.cpp.obj"
-	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/Classes/Sprite.cpp.obj -MF CMakeFiles\main.dir\Classes\Sprite.cpp.obj.d -o CMakeFiles\main.dir\Classes\Sprite.cpp.obj -c C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\Classes\Sprite.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/main.dir/Classes/Sprite.cpp.obj"
+	C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/Classes/Sprite.cpp.obj -MF CMakeFiles\main.dir\Classes\Sprite.cpp.obj.d -o CMakeFiles\main.dir\Classes\Sprite.cpp.obj -c C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\Classes\Sprite.cpp
 
 CMakeFiles/main.dir/Classes/Sprite.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/main.dir/Classes/Sprite.cpp.i"
-	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\Classes\Sprite.cpp > CMakeFiles\main.dir\Classes\Sprite.cpp.i
+	C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\Classes\Sprite.cpp > CMakeFiles\main.dir\Classes\Sprite.cpp.i
 
 CMakeFiles/main.dir/Classes/Sprite.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/main.dir/Classes/Sprite.cpp.s"
-	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\Classes\Sprite.cpp -o CMakeFiles\main.dir\Classes\Sprite.cpp.s
+	C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\Classes\Sprite.cpp -o CMakeFiles\main.dir\Classes\Sprite.cpp.s
 
 CMakeFiles/main.dir/main.cpp.obj: CMakeFiles/main.dir/flags.make
 CMakeFiles/main.dir/main.cpp.obj: CMakeFiles/main.dir/includes_CXX.rsp
-CMakeFiles/main.dir/main.cpp.obj: C:/Users/Pichau/OneDrive/Documentos/Faculdade/pgf/PGF2025_2/TrabalhoGA/main.cpp
+CMakeFiles/main.dir/main.cpp.obj: C:/Users/Usuario/Documents/Unisinos/procgraf/processamento-grafico-fundamentos/TrabalhoGA/main.cpp
 CMakeFiles/main.dir/main.cpp.obj: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/main.dir/main.cpp.obj"
-	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/main.cpp.obj -MF CMakeFiles\main.dir\main.cpp.obj.d -o CMakeFiles\main.dir\main.cpp.obj -c C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/main.dir/main.cpp.obj"
+	C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/main.cpp.obj -MF CMakeFiles\main.dir\main.cpp.obj.d -o CMakeFiles\main.dir\main.cpp.obj -c C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\main.cpp
 
 CMakeFiles/main.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/main.dir/main.cpp.i"
-	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\main.cpp > CMakeFiles\main.dir\main.cpp.i
+	C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\main.cpp > CMakeFiles\main.dir\main.cpp.i
 
 CMakeFiles/main.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/main.dir/main.cpp.s"
-	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\main.cpp -o CMakeFiles\main.dir\main.cpp.s
+	C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\main.cpp -o CMakeFiles\main.dir\main.cpp.s
 
 CMakeFiles/main.dir/libs/glad.c.obj: CMakeFiles/main.dir/flags.make
 CMakeFiles/main.dir/libs/glad.c.obj: CMakeFiles/main.dir/includes_C.rsp
-CMakeFiles/main.dir/libs/glad.c.obj: C:/Users/Pichau/OneDrive/Documentos/Faculdade/pgf/PGF2025_2/TrabalhoGA/libs/glad.c
+CMakeFiles/main.dir/libs/glad.c.obj: C:/Users/Usuario/Documents/Unisinos/procgraf/processamento-grafico-fundamentos/TrabalhoGA/libs/glad.c
 CMakeFiles/main.dir/libs/glad.c.obj: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/main.dir/libs/glad.c.obj"
-	C:\msys64\ucrt64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/main.dir/libs/glad.c.obj -MF CMakeFiles\main.dir\libs\glad.c.obj.d -o CMakeFiles\main.dir\libs\glad.c.obj -c C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\libs\glad.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/main.dir/libs/glad.c.obj"
+	C:\msys64\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/main.dir/libs/glad.c.obj -MF CMakeFiles\main.dir\libs\glad.c.obj.d -o CMakeFiles\main.dir\libs\glad.c.obj -c C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\libs\glad.c
 
 CMakeFiles/main.dir/libs/glad.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/main.dir/libs/glad.c.i"
-	C:\msys64\ucrt64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\libs\glad.c > CMakeFiles\main.dir\libs\glad.c.i
+	C:\msys64\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\libs\glad.c > CMakeFiles\main.dir\libs\glad.c.i
 
 CMakeFiles/main.dir/libs/glad.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/main.dir/libs/glad.c.s"
-	C:\msys64\ucrt64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\libs\glad.c -o CMakeFiles\main.dir\libs\glad.c.s
+	C:\msys64\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\libs\glad.c -o CMakeFiles\main.dir\libs\glad.c.s
 
 # Object files for target main
 main_OBJECTS = \
@@ -152,7 +152,7 @@ main.exe: _deps/soil2-build/libsoil2.a
 main.exe: CMakeFiles/main.dir/linkLibs.rsp
 main.exe: CMakeFiles/main.dir/objects1.rsp
 main.exe: CMakeFiles/main.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable main.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable main.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\main.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -164,6 +164,6 @@ CMakeFiles/main.dir/clean:
 .PHONY : CMakeFiles/main.dir/clean
 
 CMakeFiles/main.dir/depend:
-	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\build C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\build C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\build\CMakeFiles\main.dir\DependInfo.cmake "--color=$(COLOR)"
+	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\build C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\build C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\build\CMakeFiles\main.dir\DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/main.dir/depend
 

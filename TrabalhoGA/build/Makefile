@@ -56,10 +56,10 @@ RM = "C:\Program Files\CMake\bin\cmake.exe" -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA
+CMAKE_SOURCE_DIR = C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\build
+CMAKE_BINARY_DIR = C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -131,9 +131,9 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\build\CMakeFiles C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\build\\CMakeFiles\progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\build\CMakeFiles C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\build\\CMakeFiles\progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\Pichau\OneDrive\Documentos\Faculdade\pgf\PGF2025_2\TrabalhoGA\build\CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\Usuario\Documents\Unisinos\procgraf\processamento-grafico-fundamentos\TrabalhoGA\build\CMakeFiles 0
 .PHONY : all
 
 # The main clean target
