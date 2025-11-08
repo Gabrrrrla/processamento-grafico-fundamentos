@@ -75,7 +75,7 @@ def apply_filter_cv(img_bgr, name):
 
 # ------------------- Utils: stickers -------------------
 
-def load_stickers(dirpath, size=(250, 250)):
+def load_stickers(dirpath, size=(400, 400)):
     stickers = {}
     if not os.path.exists(dirpath):
         print(f"Pasta de stickers '{dirpath}' não encontrada.")
@@ -165,7 +165,9 @@ class EditorApp:
 
         self.canvas = tk.Canvas(left, width=CAM_WIDTH, height=CAM_HEIGHT, bg='black')
         self.canvas.pack()
-        self.canvas.bind('<Button-1>', self.on_canvas_click)
+        self.canvas.bind('<Button-1>', self.start_move_sticker)
+        self.canvas.bind('<B1-Motion>', self.drag_sticker)
+        self.canvas.bind('<ButtonRelease-1>', self.drop_sticker)
 
         right = tk.Frame(self.root)
         right.pack(side=tk.LEFT, fill=tk.Y, padx=5, pady=5)
@@ -306,23 +308,33 @@ class EditorApp:
         else:
             self.selected_sticker_name.set('')
 
-    def on_canvas_click(self, event):
-        if self.mode != 'photo':
-            return
-        if self.current is None:
-            return
-        sname = self.selected_sticker_name.get()
-        if not sname:
-            return
-        fg = self.stickers.get(sname)
-        if fg is None:
-            return
-        x = int(event.x)
-        y = int(event.y)
-        h, w = fg.shape[:2]
-        top_left_x = x - w // 2
-        top_left_y = y - h // 2
-        self.current = overlay_alpha(self.current, fg, top_left_x, top_left_y)
+    def start_move_sticker(self, event):
+        if self.selected_sticker_name:
+            self.moving_sticker = self.stickers[self.selected_sticker_name.get()]
+            self.sticker_x = event.x
+            self.sticker_y = event.y
+            self.temp_image = self.current.copy()
+            self.show_sticker_preview(event.x, event.y)
+
+    def drag_sticker(self, event):
+        if hasattr(self, "moving_sticker"):
+            self.current = self.temp_image.copy()
+            self.show_sticker_preview(event.x, event.y)
+
+    def drop_sticker(self, event):
+        if hasattr(self, "moving_sticker"):
+            fg = self.moving_sticker
+            x, y = event.x, event.y
+            self.current = overlay_alpha(self.current, fg, x, y)
+            del self.moving_sticker
+            self.display_image(self.current)
+
+    def show_sticker_preview(self, x, y):
+        """Exibe o sticker enquanto arrasta (sem aplicar permanentemente)."""
+        fg = self.moving_sticker
+        preview = overlay_alpha(self.temp_image.copy(), fg, x, y)
+        self.display_image(preview)
+
         self._refresh_canvas()
 
     # --------- Câmera ---------
@@ -361,16 +373,17 @@ class EditorApp:
             self._refresh_canvas_from_cv(out)
         self.cam_running = False
 
+    def display_image(self, img_bgr):
+        self._refresh_canvas_from_cv(img_bgr)
+
     # --------- Update da tela ---------
     def _refresh_canvas(self):
         if self.current is None:
-            # clear canvas
             self.canvas.delete('all')
             return
         self._refresh_canvas_from_cv(self.current)
 
     def _refresh_canvas_from_cv(self, img_bgr):
-        # resize to canvas while keeping aspect ratio
         h, w = img_bgr.shape[:2]
         scale = min(CAM_WIDTH / w, CAM_HEIGHT / h)
         nw = int(w * scale)
@@ -380,12 +393,11 @@ class EditorApp:
         photo = ImageTk.PhotoImage(pil)
         self._photoimage = photo
         self.canvas.delete('all')
-        # center image on canvas
         x = (CAM_WIDTH - nw) // 2
         y = (CAM_HEIGHT - nh) // 2
         self.canvas.create_image(x, y, anchor=tk.NW, image=photo)
 
-    # --------- Help and close ---------
+    # --------- Ajuda e sair ---------
     def show_help(self):
         txt = (
             'Controles:\n'
@@ -404,7 +416,7 @@ class EditorApp:
         self.root.quit()
         self.root.destroy()
 
-# ------------------- Entrypoint -------------------
+# ------------------- Main -------------------
 
 def main():
     root = tk.Tk()
