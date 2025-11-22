@@ -1,11 +1,10 @@
 """
-Gabriela Bley Rodrigues
-
-p rodar: python main.py
+Editor de imagens e vídeo - Trabalho de GB
+Aluna: Gabriela Bley Rodrigues
+Prof: Rossana Baptista
 """
 
 import os
-import threading
 import tkinter as tk
 from tkinter import filedialog, messagebox, ttk
 from PIL import Image, ImageTk
@@ -14,601 +13,489 @@ import numpy as np
 
 # ------------------- Config -------------------
 STICKERS_DIR = 'stickers'
-WINDOW_TITLE = 'Editor de imagens e vídeo'
+WINDOW_TITLE = 'Editor de Imagens e Vídeo - Grau A'
 CAM_WIDTH = 640
 CAM_HEIGHT = 480
 
-# ------------------- Filtros com valores fixos -------------------
+# ------------------- Filtros -------------------
 FILTERS = [
-    'none',
-    'gaussian',
-    'box',
-    'median',
-    'bilateral',
-    'sharpen',
-    'unsharp',
-    'laplacian',
-    'emboss',
-    'canny',
-    'hist_eq'
+    'none', 'gaussian', 'box', 'median', 'bilateral',
+    'sharpen', 'unsharp', 'laplacian', 'emboss', 'canny', 'hist_eq'
 ]
-
-"""
-    gaussian: 5x5, sigma=1.0
-    box: média 5x5
-    median: k=5
-"""
-
 
 FILTER_INFO = {
     'none': 'Sem filtro.',
-    'gaussian': 'Suavização Gaussiana (5x5, sigma=1.0). Remove ruído suave.',
+    'gaussian': 'Suavização Gaussiana (5x5). Remove ruído suave.',
     'box': 'Blur Box (média 5x5). Suavização simples.',
-    'median': 'MedianBlur (k=5). Bom para ruído sal-e-pimenta.',
-    'bilateral': 'Filtro bilateral: suaviza mantendo bordas.',
-    'sharpen': 'Realça bordas (filtro de nitidez).',
-    'unsharp': 'Unsharp mask (realce via subtração de blur).',
-    'laplacian': 'Laplaciano: detecção de bordas (segunda derivada).',
-    'emboss': 'Emboss: relevo, efeito artístico.',
-    'canny': 'Detecção de bordas Canny. Retorna linhas das bordas.',
-    'hist_eq': 'Equalização de histograma (grayscale).'
+    'median': 'MedianBlur (k=5). Remove ruído "sal-e-pimenta".',
+    'bilateral': 'Filtro bilateral: suaviza mantendo as bordas.',
+    'sharpen': 'Realça bordas (matriz de nitidez).',
+    'unsharp': 'Unsharp mask (realce subtraindo a versão borrada).',
+    'laplacian': 'Laplaciano: detecta bordas (segunda derivada).',
+    'emboss': 'Emboss: cria efeito de relevo/sombra.',
+    'canny': 'Canny: Detector de bordas otimizado.',
+    'hist_eq': 'Equalização de Histograma (melhora contraste).'
 }
 
-# ------------------- Utils: filtros -------------------
+# ------------------- Utils: processamento -------------------
 
 def apply_filter_cv(img_bgr, name):
-    """Aplica o filtro e sempre retorna uma imagem BGR (3 canais)."""
-    if img_bgr is None:
-        return None
+    """Aplica o filtro e retorna imagem BGR."""
+    if img_bgr is None: return None
     img = img_bgr.copy()
-    if name == 'none':
-        return img
-    if name == 'gaussian':
-        return cv2.GaussianBlur(img, (5,5), 1.0)
-    if name == 'box':
-        return cv2.blur(img, (5,5))
-    if name == 'median':
-        return cv2.medianBlur(img, 5)
-    if name == 'bilateral':
-        return cv2.bilateralFilter(img, 9, 75, 75)
+    
+    if name == 'none': return img
+    
+    # conversões necessárias para filtros que exigem Gray na entrada
+    if name in ['canny', 'hist_eq', 'laplacian']:
+        # se já for colorido, converte para processar, depois volta para BGR para manter padrão
+        gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+        
+        if name == 'canny':
+            edges = cv2.Canny(gray, 50, 150)
+            return cv2.cvtColor(edges, cv2.COLOR_GRAY2BGR)
+        if name == 'hist_eq':
+            eq = cv2.equalizeHist(gray)
+            return cv2.cvtColor(eq, cv2.COLOR_GRAY2BGR)
+        if name == 'laplacian':
+            lap = cv2.Laplacian(gray, cv2.CV_64F)
+            lap = cv2.convertScaleAbs(lap)
+            return cv2.cvtColor(lap, cv2.COLOR_GRAY2BGR)
+
+    # filtros que aceitam BGR direto
+    if name == 'gaussian': return cv2.GaussianBlur(img, (5,5), 1.0)
+    if name == 'box': return cv2.blur(img, (5,5))
+    if name == 'median': return cv2.medianBlur(img, 5)
+    if name == 'bilateral': return cv2.bilateralFilter(img, 9, 75, 75)
+    
     if name == 'sharpen':
-        kernel = np.array([[0,-1,0],[-1,5,-1],[0,-1,0]], dtype=np.float32)
+        kernel = np.array([[0,-1,0], [-1,5,-1], [0,-1,0]], dtype=np.float32)
         return cv2.filter2D(img, -1, kernel)
+    
     if name == 'unsharp':
         blurred = cv2.GaussianBlur(img, (9,9), 10.0)
         return cv2.addWeighted(img, 1.5, blurred, -0.5, 0)
-    if name == 'laplacian':
-        gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-        lap = cv2.Laplacian(gray, cv2.CV_64F, ksize=3)
-        lap = cv2.convertScaleAbs(lap)
-        return cv2.cvtColor(lap, cv2.COLOR_GRAY2BGR)
+    
     if name == 'emboss':
-        kernel = np.array([[-2,-1,0],[-1,1,1],[0,1,2]], dtype=np.float32)
+        kernel = np.array([[-2,-1,0], [-1,1,1], [0,1,2]], dtype=np.float32)
         emb = cv2.filter2D(img, -1, kernel) + 128
         return cv2.convertScaleAbs(emb)
-    if name == 'canny':
-        gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-        edges = cv2.Canny(gray, 50, 150)
-        return cv2.cvtColor(edges, cv2.COLOR_GRAY2BGR)
-    if name == 'hist_eq':
-        gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-        eq = cv2.equalizeHist(gray)
-        return cv2.cvtColor(eq, cv2.COLOR_GRAY2BGR)
+
     return img
 
-# ------------------- Utils: stickers -------------------
+def get_channel_view(img_bgr, channel_mode):
+    """
+    Retorna a visualização baseada no canal selecionado.
+    channel_mode: 'RGB', 'Gray', 'Red', 'Green', 'Blue'
+    """
+    if img_bgr is None: return None
+    if channel_mode == 'RGB':
+        return img_bgr
+    elif channel_mode == 'Gray':
+        gray = cv2.cvtColor(img_bgr, cv2.COLOR_BGR2GRAY)
+        return cv2.cvtColor(gray, cv2.COLOR_GRAY2BGR)
+    
+    # separa canais (openCV usa BGR)
+    b, g, r = cv2.split(img_bgr)
+    zeros = np.zeros_like(b)
+    
+    if channel_mode == 'Red':
+        return cv2.merge([zeros, zeros, r])
+    elif channel_mode == 'Green':
+        return cv2.merge([zeros, g, zeros])
+    elif channel_mode == 'Blue':
+        return cv2.merge([b, zeros, zeros])
+    
+    return img_bgr
 
-def load_stickers(dirpath, size=(400, 400)):
-    """
-    Carrega os stickers PNG com alfa. Retorna dict: chave_limpa -> {'img':np.array(rgba),'file':filename, 'orig_size':(w,h)}
-    Mantém imagens no tamanho original (ou redimensiona inicialmente para size se muito grande).
-    """
+# ------------------- Utils: stickers -------------------
+def load_stickers(dirpath, size=(300, 300)):
     stickers = {}
     if not os.path.exists(dirpath):
-        print(f"Pasta de stickers '{dirpath}' não encontrada.")
+        try:
+            os.makedirs(dirpath)
+            print(f"Pasta '{dirpath}' criada. Coloque imagens PNG lá.")
+        except:
+            pass
         return stickers
 
     for fname in sorted(os.listdir(dirpath)):
         if fname.lower().endswith('.png'):
             path = os.path.join(dirpath, fname)
-            im = cv2.imread(path, cv2.IMREAD_UNCHANGED)  # BGRA
-            if im is None:
-                print(f"Não foi possível carregar: {fname}")
-                continue
-
+            im = cv2.imread(path, cv2.IMREAD_UNCHANGED)
+            if im is None: continue
+            
+            # resize inicial se for muito grande
             h, w = im.shape[:2]
-            # limitar tamanho inicial para evitar stickers gigantes
             max_side = max(w, h)
             if max_side > size[0]:
                 scale = size[0] / max_side
-                new_w = int(w * scale)
-                new_h = int(h * scale)
-                im = cv2.resize(im, (new_w, new_h), interpolation=cv2.INTER_AREA)
-                h, w = im.shape[:2]
-
-            clean = os.path.splitext(fname)[0]  # remove extensão
-            stickers[clean] = {'img': im, 'file': fname, 'orig_size': (w, h)}
+                im = cv2.resize(im, (int(w*scale), int(h*scale)), interpolation=cv2.INTER_AREA)
+            
+            clean_name = os.path.splitext(fname)[0]
+            stickers[clean_name] = im
     return stickers
 
-
 def overlay_alpha(bg, fg_rgba, x, y):
-    """
-    Sobrepõe fg_rgba (BGRA ou BGR) sobre bg (BGR) na posição x,y (coordenadas da imagem).
-    Retorna nova imagem (cópia).
-    """
+    """Sobrepõe sticker RGBA no BG (BGR) na posição x,y."""
     out = bg.copy()
     bh, bw = out.shape[:2]
     fh, fw = fg_rgba.shape[:2]
-    if x >= bw or y >= bh:
-        return out
-    w = min(fw, bw - x)
-    h = min(fh, bh - y)
-    if w <= 0 or h <= 0:
-        return out
-    fg_crop = fg_rgba[0:h, 0:w]
+    
+    if x >= bw or y >= bh: return out
+    
+    # clip coordinates
+    x1, y1 = max(x, 0), max(y, 0)
+    x2, y2 = min(x + fw, bw), min(y + fh, bh)
+    
+    # offsets no sticker (caso x ou y sejam negativos)
+    fx1 = max(0, -x)
+    fy1 = max(0, -y)
+    fx2 = fx1 + (x2 - x1)
+    fy2 = fy1 + (y2 - y1)
+    
+    if (x2 <= x1) or (y2 <= y1): return out
+
+    fg_crop = fg_rgba[fy1:fy2, fx1:fx2]
+    bg_crop = out[y1:y2, x1:x2]
+
     if fg_crop.shape[2] == 4:
         alpha = fg_crop[:, :, 3].astype(np.float32) / 255.0
         for c in range(3):
-            out[y:y+h, x:x+w, c] = (alpha * fg_crop[:, :, c] + (1-alpha) * out[y:y+h, x:x+w, c])
+            bg_crop[:, :, c] = (alpha * fg_crop[:, :, c] + (1 - alpha) * bg_crop[:, :, c])
     else:
-        out[y:y+h, x:x+w] = fg_crop[:, :, :3]
+        bg_crop[:] = fg_crop
+
+    out[y1:y2, x1:x2] = bg_crop
     return out
 
-# ------------------- Utils: conversão -------------------
-
-def cv2_to_pil(img_bgr):
-    img_rgb = cv2.cvtColor(img_bgr, cv2.COLOR_BGR2RGB)
-    return Image.fromarray(img_rgb)
-
-
-def pil_to_cv2(pil_img):
-    arr = np.array(pil_img)
-    if arr.ndim == 2:
-        return cv2.cvtColor(arr, cv2.COLOR_GRAY2BGR)
-    return cv2.cvtColor(arr, cv2.COLOR_RGB2BGR)
-
-# ------------------- Interface gráfica -------------------
+# ------------------- Interface -------------------
 
 class EditorApp:
     def __init__(self, root):
         self.root = root
         self.root.title(WINDOW_TITLE)
 
-        self.mode = 'photo'
+        # estado
+        self.mode = 'photo' 
         self.cap = None
-        self.cam_thread = None
         self.cam_running = False
 
-        self.original = None  # imagem original de background (BGR)
-        self.current = None   # imagem atual do background com filtros etc (BGR)
-        self.selected_filter = tk.StringVar(value='none')
+        self.original = None
+        self.current = None
+        self.second_image = None 
 
+        # variáveis UI
+        self.selected_filter = tk.StringVar(value='none')
+        self.selected_channel = tk.StringVar(value='RGB') # Novo requisito
+        self.filter_overwrite = tk.BooleanVar(value=True)
+        
         # stickers
         self.stickers = load_stickers(STICKERS_DIR)
         self.sticker_labels = ['Nenhum'] + list(self.stickers.keys())
-        self.selected_sticker_name = tk.StringVar(value='Nenhum')
+        self.selected_sticker = tk.StringVar(value='Nenhum')
 
-        # segunda imagem
-        self.second_image = None
-
-        # opções de filtro
-        self.filter_overwrite = tk.BooleanVar(value=True)  # True = aplica sempre sobre original
-
-        # atributos de exibição (para mapear clique)
-        self.display_scale = 1.0
-        self.display_offset = (0, 0)
-        self.display_size = (0, 0)  # (nw, nh)
-
-        # sticker em movimento/resize
+        # interação canvas
+        self.display_params = {'scale': 1.0, 'offset': (0,0)}
         self.moving = False
-        self.moving_mode = None  # 'move' ou 'resize'
-        self.moving_sticker_key = None
-        self.moving_sticker_img = None  # RGBA numpy array
-        self.moving_sticker_pos = (0, 0)  # coordenadas na imagem (não no canvas)
-        self.moving_sticker_size = (0, 0)  # w,h em pixels (no espaço da imagem)
-        self.temp_image = None  # cópia de current usada durante preview
+        self.move_data = {} # armazena estado do arraste
 
-        # UI
         self._build_ui()
-        self._update_sticker_menu()
+        
+        # cria imagem preta padrão para iniciar bonito
+        blank = np.zeros((CAM_HEIGHT, CAM_WIDTH, 3), dtype=np.uint8)
+        self.original = blank
+        self.current = blank.copy()
         self._refresh_canvas()
 
     def _build_ui(self):
-        left = tk.Frame(self.root)
-        left.pack(side=tk.LEFT, padx=5, pady=5)
-
-        self.canvas = tk.Canvas(left, width=CAM_WIDTH, height=CAM_HEIGHT, bg='black')
+        # layout: esquerda fica o canvas, direita ficam os controles
+        frame_left = tk.Frame(self.root)
+        frame_left.pack(side=tk.LEFT, padx=10, pady=10)
+        
+        self.canvas = tk.Canvas(frame_left, width=CAM_WIDTH, height=CAM_HEIGHT, bg='#222')
         self.canvas.pack()
+        # bindings do mouse
         self.canvas.bind('<Button-1>', self.on_canvas_click)
         self.canvas.bind('<B1-Motion>', self.on_canvas_drag)
         self.canvas.bind('<ButtonRelease-1>', self.on_canvas_release)
 
-        right = tk.Frame(self.root)
-        right.pack(side=tk.LEFT, fill=tk.Y, padx=5, pady=5)
+        frame_right = tk.Frame(self.root)
+        frame_right.pack(side=tk.RIGHT, fill=tk.Y, padx=10, pady=10)
 
-        # modo
-        mode_frame = tk.LabelFrame(right, text='Modo')
-        mode_frame.pack(fill=tk.X, pady=4)
-        tk.Button(mode_frame, text='Modo Foto', command=self.set_mode_photo).pack(side=tk.LEFT, padx=4, pady=4)
-        tk.Button(mode_frame, text='Modo Vídeo', command=self.set_mode_video).pack(side=tk.LEFT, padx=4, pady=4)
+        # modos
+        lbl_mode = tk.LabelFrame(frame_right, text="Modo de Operação")
+        lbl_mode.pack(fill=tk.X, pady=5)
+        tk.Button(lbl_mode, text="Modo Foto (Carregar)", command=self.btn_load_img).pack(side=tk.LEFT, padx=5, pady=5)
+        tk.Button(lbl_mode, text="Modo Vídeo (Webcam)", command=self.btn_toggle_cam).pack(side=tk.LEFT, padx=5, pady=5)
 
-        # carrega, salva e reseta
-        io_frame = tk.LabelFrame(right, text='Arquivo')
-        io_frame.pack(fill=tk.X, pady=4)
-        tk.Button(io_frame, text='Carregar imagem', command=self.load_image).pack(fill=tk.X, padx=4, pady=2)
-        tk.Button(io_frame, text='Salvar imagem', command=self.save_image).pack(fill=tk.X, padx=4, pady=2)
-        tk.Button(io_frame, text='Resetar', command=self.reset_image).pack(fill=tk.X, padx=4, pady=2)
+        # canais
+        lbl_chan = tk.LabelFrame(frame_right, text="Visualização de Canais")
+        lbl_chan.pack(fill=tk.X, pady=5)
+        cbox_chan = ttk.Combobox(lbl_chan, values=['RGB', 'Red', 'Green', 'Blue', 'Gray'], 
+                                 textvariable=self.selected_channel, state='readonly')
+        cbox_chan.pack(fill=tk.X, padx=5, pady=5)
+        cbox_chan.bind('<<ComboboxSelected>>', lambda e: self._refresh_canvas())
 
         # filtros
-        filt_frame = tk.LabelFrame(right, text='Filtros')
-        filt_frame.pack(fill=tk.X, pady=4)
-        self.filter_combo = ttk.Combobox(filt_frame, values=FILTERS, textvariable=self.selected_filter, state='readonly')
-        self.filter_combo.pack(fill=tk.X, padx=4, pady=2)
-        self.filter_combo.bind('<<ComboboxSelected>>', self.on_filter_selected)
-        tk.Button(filt_frame, text='Aplicar filtro', command=self.apply_filter_button).pack(fill=tk.X, padx=4, pady=2)
-        tk.Checkbutton(filt_frame, text='Aplicar sempre sobre ORIGINAL (não empilhar)', variable=self.filter_overwrite).pack(anchor=tk.W, padx=4)
-        self.filter_desc_label = tk.Label(filt_frame, text='Descrição: -', wraplength=220, justify=tk.LEFT)
-        self.filter_desc_label.pack(fill=tk.X, padx=4, pady=2)
+        lbl_filt = tk.LabelFrame(frame_right, text="Filtros")
+        lbl_filt.pack(fill=tk.X, pady=5)
+        
+        cbox_filt = ttk.Combobox(lbl_filt, values=FILTERS, textvariable=self.selected_filter, state='readonly')
+        cbox_filt.pack(fill=tk.X, padx=5, pady=5)
+        cbox_filt.bind('<<ComboboxSelected>>', self.on_filter_info)
+        
+        self.lbl_desc = tk.Label(lbl_filt, text="Descrição...", wraplength=250, justify=tk.LEFT, fg="gray")
+        self.lbl_desc.pack(fill=tk.X, padx=5)
 
-        # operações de aritmética
-        arith_frame = tk.LabelFrame(right, text='Operações aritméticas (2 imagens)')
-        arith_frame.pack(fill=tk.X, pady=4)
-        tk.Button(arith_frame, text='Carregar 2ª imagem', command=self.load_second_image).pack(fill=tk.X, padx=4, pady=2)
-        tk.Button(arith_frame, text='Add', command=lambda: self.apply_arith('add')).pack(fill=tk.X, padx=4, pady=2)
-        tk.Button(arith_frame, text='Sub', command=lambda: self.apply_arith('subtract')).pack(fill=tk.X, padx=4, pady=2)
-        tk.Button(arith_frame, text='Blend (0.5/0.5)', command=lambda: self.apply_arith('blend')).pack(fill=tk.X, padx=4, pady=2)
+        tk.Button(lbl_filt, text="Aplicar Filtro", command=self.btn_apply_filter).pack(fill=tk.X, padx=5, pady=5)
+        tk.Checkbutton(lbl_filt, text="Resetar ao aplicar (não empilhar)", variable=self.filter_overwrite).pack(anchor='w')
+
+        # aritmética
+        lbl_ari = tk.LabelFrame(frame_right, text="Operações (2 Imagens)")
+        lbl_ari.pack(fill=tk.X, pady=5)
+        tk.Button(lbl_ari, text="Carregar 2ª Imagem", command=self.btn_load_second).pack(fill=tk.X, padx=5)
+        f_ari_btns = tk.Frame(lbl_ari)
+        f_ari_btns.pack(fill=tk.X)
+        tk.Button(f_ari_btns, text="Soma", command=lambda: self.do_arith('add')).pack(side=tk.LEFT, expand=True)
+        tk.Button(f_ari_btns, text="Sub", command=lambda: self.do_arith('sub')).pack(side=tk.LEFT, expand=True)
+        tk.Button(f_ari_btns, text="Blend", command=lambda: self.do_arith('blend')).pack(side=tk.LEFT, expand=True)
 
         # stickers
-        sticker_frame = tk.LabelFrame(right, text='Stickers (modo foto)')
-        sticker_frame.pack(fill=tk.X, pady=4)
-        self.sticker_combo = ttk.Combobox(sticker_frame, values=self.sticker_labels, textvariable=self.selected_sticker_name, state='readonly')
-        self.sticker_combo.pack(fill=tk.X, padx=4, pady=2)
-        tk.Label(sticker_frame, text='Clique na imagem para posicionar. Arraste para mover. Arraste no canto inferior-direito do sticker para redimensionar.').pack()
+        lbl_stk = tk.LabelFrame(frame_right, text="Stickers (Modo Foto)")
+        lbl_stk.pack(fill=tk.X, pady=5)
+        self.combo_stickers = ttk.Combobox(lbl_stk, values=self.sticker_labels, textvariable=self.selected_sticker, state='readonly')
+        self.combo_stickers.pack(fill=tk.X, padx=5, pady=5)
+        tk.Label(lbl_stk, text="Selecione e clique na imagem.\nArraste p/ mover, Canto Inf-Dir p/ redim.", font=("Arial", 8)).pack()
 
-        # ajuda e sair
-        misc_frame = tk.Frame(right)
-        misc_frame.pack(fill=tk.X, pady=8)
-        tk.Button(misc_frame, text='Ajuda', command=self.show_help).pack(fill=tk.X, padx=4, pady=2)
-        tk.Button(misc_frame, text='Sair', command=self.on_close).pack(fill=tk.X, padx=4, pady=2)
+        # controle geral
+        tk.Button(frame_right, text="Resetar Tudo", command=self.btn_reset).pack(fill=tk.X, pady=5)
+        tk.Button(frame_right, text="Salvar Imagem", command=self.btn_save).pack(fill=tk.X, pady=5)
 
-        self._photoimage = None
-
-    # --------- Seleção de modo ---------
-    def set_mode_photo(self):
+    # ------------------- Lógica de câmera -------------------
+    def btn_toggle_cam(self):
         if self.cam_running:
-            self.stop_camera()
-        self.mode = 'photo'
-        self._refresh_canvas()
-
-    def set_mode_video(self):
+            self.stop_cam()
+        else:
+            self.start_cam()
+    
+    def start_cam(self):
+        self.cap = cv2.VideoCapture(0)
+        if not self.cap.isOpened():
+            messagebox.showerror("Erro", "Não foi possível abrir a webcam.")
+            return
+        self.cap.set(3, CAM_WIDTH)
+        self.cap.set(4, CAM_HEIGHT)
+        self.cam_running = True
         self.mode = 'video'
-        self.start_camera()
-
-    # --------- E/S ---------
-    def load_image(self):
-        path = filedialog.askopenfilename(title='Selecionar imagem', filetypes=[('Image','*.png;*.jpg;*.jpeg;*.bmp;*.tiff')])
-        if not path:
-            return
-        img = cv2.imread(path)
-        if img is None:
-            messagebox.showerror('Erro', 'Não foi possível abrir a imagem')
-            return
-        img = img.copy()
-        self.original = img.copy()
-        self.current = img.copy()
+        self.update_cam_frame() # inicia loop via root.after
+    
+    def stop_cam(self):
+        self.cam_running = False
+        if self.cap:
+            self.cap.release()
+        self.cap = None
         self.mode = 'photo'
-        self._refresh_canvas()
 
-    def save_image(self):
-        if self.current is None:
-            messagebox.showinfo('Salvar', 'Nenhuma imagem para salvar')
-            return
-        path = filedialog.asksaveasfilename(defaultextension='.jpg', filetypes=[('JPEG','*.jpg'),('PNG','*.png')])
-        if not path:
-            return
-        cv2.imwrite(path, self.current)
-        messagebox.showinfo('Salvar', f'Imagem salva em {path}')
+    def update_cam_frame(self):
+        if not self.cam_running: return
+        
+        ret, frame = self.cap.read()
+        if ret:
+            # espelhar webcam
+            frame = cv2.flip(frame, 1)
+            
+            # se tiver filtro selecionado no modo vídeo, aplica em tempo real
+            filt = self.selected_filter.get()
+            processed = apply_filter_cv(frame, filt)
+            
+            self.current = processed
+            self._refresh_canvas()
+        
+        # agenda a próxima execução em 10ms (aprox 30-60fps)
+        self.root.after(15, self.update_cam_frame)
 
-    def reset_image(self):
+    # ------------------- Ações de botão -------------------
+    def btn_load_img(self):
+        self.stop_cam()
+        path = filedialog.askopenfilename(filetypes=[("Imagens", "*.jpg *.png *.jpeg *.bmp")])
+        if path:
+            img = cv2.imread(path)
+            if img is not None:
+                self.original = img
+                self.current = img.copy()
+                self.mode = 'photo'
+                self._refresh_canvas()
+
+    def btn_save(self):
+        if self.current is None: return
+        # ao salvar, salvar o que está sendo visto 
+        to_save = get_channel_view(self.current, self.selected_channel.get())
+        path = filedialog.asksaveasfilename(defaultextension=".jpg", filetypes=[("JPG", "*.jpg"), ("PNG", "*.png")])
+        if path:
+            cv2.imwrite(path, to_save)
+            messagebox.showinfo("Salvo", f"Imagem salva em {path}")
+
+    def btn_reset(self):
         if self.original is not None:
             self.current = self.original.copy()
             self._refresh_canvas()
+
+    def on_filter_info(self, event):
+        d = FILTER_INFO.get(self.selected_filter.get(), "")
+        self.lbl_desc.config(text=d)
+
+    def btn_apply_filter(self):
+        if self.mode == 'video':
+            messagebox.showinfo("Info", "No modo vídeo o filtro é aplicado em tempo real.")
+            return
+        
+        if self.filter_overwrite.get():
+            base = self.original.copy()
         else:
-            messagebox.showinfo('Reset', 'Nenhuma imagem original carregada')
-
-    # --------- Filtros e aritmética ---------
-    def on_filter_selected(self, event=None):
-        name = self.selected_filter.get()
-        desc = FILTER_INFO.get(name, 'Sem descrição')
-        self.filter_desc_label.config(text=f'Descrição: {desc}')
-
-    def apply_filter_button(self):
-        if self.current is None and not (self.mode == 'video' and self.cam_running):
-            messagebox.showinfo('Filtro', 'Nenhuma imagem/stream ativo')
-            return
-        name = self.selected_filter.get()
-        # Aplica conforme opção overwrite
-        if self.mode == 'video' and self.cam_running:
-            messagebox.showinfo('Filtro', f'Filtro {name} aplicado ao stream (valores fixos).')
-            return
-        base = self.original if self.filter_overwrite.get() and self.original is not None else self.current
-        if base is None:
-            messagebox.showinfo('Filtro', 'Nenhuma imagem base para aplicar.')
-            return
-        self.current = apply_filter_cv(base.copy(), name)
+            base = self.current.copy()
+            
+        res = apply_filter_cv(base, self.selected_filter.get())
+        self.current = res
         self._refresh_canvas()
 
-    def load_second_image(self):
-        path = filedialog.askopenfilename(title='Selecionar 2ª imagem', filetypes=[('Image','*.png;*.jpg;*.jpeg;*.bmp;*.tiff')])
-        if not path:
-            return
-        img = cv2.imread(path)
-        if img is None:
-            messagebox.showerror('Erro', 'Não foi possível abrir a imagem')
-            return
-        self.second_image = img
-        messagebox.showinfo('2ª imagem', '2ª imagem carregada com sucesso')
+    # ------------------- Aritmética -------------------
+    def btn_load_second(self):
+        path = filedialog.askopenfilename(title="Segunda Imagem")
+        if path:
+            self.second_image = cv2.imread(path)
+            messagebox.showinfo("Ok", "Segunda imagem carregada!")
 
-    def apply_arith(self, op):
-        if self.current is None:
-            messagebox.showinfo('Operação', 'Nenhuma imagem atual')
+    def do_arith(self, op):
+        if self.current is None or self.second_image is None:
+            messagebox.showwarning("Aviso", "Precisa da imagem principal e da 2ª imagem.")
             return
-        if self.second_image is None:
-            messagebox.showinfo('Operação', 'Carregue a 2ª imagem primeiro')
-            return
-        img1 = self.current
-        img2 = cv2.resize(self.second_image, (img1.shape[1], img1.shape[0]))
-        if op == 'add':
-            self.current = cv2.add(img1, img2)
-        elif op == 'subtract':
-            self.current = cv2.subtract(img1, img2)
-        elif op == 'blend':
-            self.current = cv2.addWeighted(img1, 0.5, img2, 0.5, 0)
-        self._refresh_canvas()
-
-    # --------- Stickers: menu e utilidades ---------
-    def _update_sticker_menu(self):
-        self.sticker_labels = ['Nenhum'] + list(self.stickers.keys())
-        self.sticker_combo['values'] = self.sticker_labels
-        self.sticker_combo.current(0)
-        self.selected_sticker_name.set('Nenhum')
-
-    # --------- Canvas mouse handlers (mapeamento coordenadas) ---------
-    def image_coords_from_canvas(self, cx, cy):
-        """Mapeia coordenadas do canvas para coordenadas da imagem atual exibida."""
-        ox, oy = self.display_offset
-        scale = self.display_scale
-        img_x = int((cx - ox) / scale)
-        img_y = int((cy - oy) / scale)
-        # clamp
-        if self.current is None:
-            return (img_x, img_y)
+        
+        # redimensiona a segunda para caber na primeira
         h, w = self.current.shape[:2]
-        img_x = max(0, min(w - 1, img_x))
-        img_y = max(0, min(h - 1, img_y))
-        return (img_x, img_y)
+        img2 = cv2.resize(self.second_image, (w, h))
+        
+        if op == 'add':
+            self.current = cv2.add(self.current, img2)
+        elif op == 'sub':
+            self.current = cv2.subtract(self.current, img2)
+        elif op == 'blend':
+            self.current = cv2.addWeighted(self.current, 0.5, img2, 0.5, 0)
+        
+        self._refresh_canvas()
 
-    def canvas_coords_from_image(self, ix, iy):
-        ox, oy = self.display_offset
-        scale = self.display_scale
-        cx = int(ix * scale + ox)
-        cy = int(iy * scale + oy)
-        return (cx, cy)
+    # ------------------- Canvas e stickers -------------------
+    def _refresh_canvas(self):
+        if self.current is None: return
+        
+        # aplica a visualização de canal (RGB, R, G, B ou Gray)
+        view_img = get_channel_view(self.current, self.selected_channel.get())
+        
+        # converte para exibir no Tkinter
+        h, w = view_img.shape[:2]
+        
+        # lógica de redimensionar para caber na tela mantendo proporção
+        scale = min(CAM_WIDTH/w, CAM_HEIGHT/h)
+        nw, nh = int(w*scale), int(h*scale)
+        
+        resized = cv2.resize(view_img, (nw, nh))
+        
+        rgb = cv2.cvtColor(resized, cv2.COLOR_BGR2RGB)
+        pil_img = Image.fromarray(rgb)
+        self.tk_img = ImageTk.PhotoImage(pil_img) # guardar ref para não perder
+        
+        self.canvas.delete("all")
+        # centralizar
+        off_x = (CAM_WIDTH - nw) // 2
+        off_y = (CAM_HEIGHT - nh) // 2
+        
+        self.canvas.create_image(off_x, off_y, anchor=tk.NW, image=self.tk_img)
+        
+        # salva dados pra converter coordenadas do mouse depois
+        self.display_params = {'scale': scale, 'offset': (off_x, off_y), 'size': (nw, nh)}
 
-    # --------- Início do movimento / clique no canvas ---------
+    # --- Mouse events pros stickers ---
+    def get_img_coords(self, cx, cy):
+        """Converte X,Y do Canvas para X,Y da imagem real"""
+        scale = self.display_params['scale']
+        ox, oy = self.display_params['offset']
+        ix = int((cx - ox) / scale)
+        iy = int((cy - oy) / scale)
+        return ix, iy
+
     def on_canvas_click(self, event):
-        # apenas modo foto permite stickers
-        if self.mode != 'photo':
-            return
+        if self.mode != 'photo': return
+        stk_name = self.selected_sticker.get()
+        if stk_name == 'Nenhum': return
 
-        if self.current is None:
-            return
-
-        # se sticker selecionado for "Nenhum", não inicia nada (usado para evitar aplicar sem querer)
-        sticker_key = self.selected_sticker_name.get()
-        if not sticker_key or sticker_key == 'Nenhum':
-            # Mas se há um sticker em preview (por segurança), cancela
-            return
-
-        # mapeia clique para coordenadas da imagem (não do canvas)
-        ix, iy = self.image_coords_from_canvas(event.x, event.y)
-
-        # prepara movimento/resize
-        sticker_info = self.stickers.get(sticker_key)
-        if sticker_info is None:
-            return
-
-        # estabelece imagem do sticker (BGRA)
-        fg = sticker_info['img']
-        fh, fw = fg.shape[:2]
-
-        # posição inicial: colocamos o sticker com o canto superior esquerdo onde clicou
-        x0, y0 = ix, iy
-        w0, h0 = fw, fh
-
-        # se já existe um sticker sendo mostrado (preview), detecta se o clique foi no canto para redimensionar
-        # se usuário clicar próximo ao canto inferior-direito do sticker, inicia resize.
-        # iniciamos move por padrão (coloca sticker com canto superior onde clicou).
+        ix, iy = self.get_img_coords(event.x, event.y)
+        
+        # começa movimentação
+        stk_img = self.stickers[stk_name]
         self.moving = True
-        self.moving_mode = 'move'  # por padrão
-        self.moving_sticker_key = sticker_key
-        self.moving_sticker_img = fg.copy()
-        self.moving_sticker_pos = (x0, y0)
-        self.moving_sticker_size = (w0, h0)
-        self.temp_image = self.current.copy()
-
-        # mostra preview inicial
-        self.show_sticker_preview_image(self.moving_sticker_img, self.moving_sticker_pos, self.moving_sticker_size)
+        self.move_data = {
+            'img': stk_img,
+            'pos': (ix, iy),
+            'base_img': self.current.copy(), # backup para o preview não estragar a imagem
+            'size': (stk_img.shape[1], stk_img.shape[0]),
+            'mode': 'move' # ou resize
+        }
+        self.draw_sticker_preview()
 
     def on_canvas_drag(self, event):
-        if not self.moving:
-            return
-        if self.current is None:
-            return
-
-        # mapeia para coordenadas da imagem
-        ix, iy = self.image_coords_from_canvas(event.x, event.y)
-
-        # se modo move: atualiza posição do canto superior esquerdo proporcionalmente
-        if self.moving_mode == 'move':
-            x, y = ix, iy
-            self.moving_sticker_pos = (x, y)
-            self.show_sticker_preview_image(self.moving_sticker_img, self.moving_sticker_pos, self.moving_sticker_size)
-        elif self.moving_mode == 'resize':
-            # resize baseado em canto superior esquerdo fixo
-            x0, y0 = self.moving_sticker_pos
-            new_w = max(1, ix - x0)
-            new_h = max(1, iy - y0)
-            self.moving_sticker_size = (new_w, new_h)
-            self.show_sticker_preview_image(self.moving_sticker_img, self.moving_sticker_pos, self.moving_sticker_size)
+        if not self.moving: return
+        ix, iy = self.get_img_coords(event.x, event.y)
+        
+        # Lógica simples: se clicar e arrastar, move o topo-esquerdo
+        # Se quisesse redimensionar, checaria se o clique foi perto da borda inferior direita
+        
+        # Detectar modo resize (se estiver perto do canto inferior direito do sticker atual)
+        mx, my = self.move_data['pos']
+        mw, mh = self.move_data['size']
+        
+        dist_corner = ((ix - (mx+mw))**2 + (iy - (my+mh))**2)**0.5
+        if dist_corner < 50 or self.move_data['mode'] == 'resize':
+             self.move_data['mode'] = 'resize'
+             nw = max(10, ix - mx)
+             nh = max(10, iy - my)
+             self.move_data['size'] = (nw, nh)
+        else:
+            self.move_data['mode'] = 'move'
+            self.move_data['pos'] = (ix, iy)
+            
+        self.draw_sticker_preview()
 
     def on_canvas_release(self, event):
-        if not self.moving:
-            return
-        if self.current is None:
-            self.moving = False
-            return
-        # ao soltar, aplica sticker permanente sobre current
-        x_img, y_img = self.moving_sticker_pos
-        w, h = self.moving_sticker_size
-        fg = self.moving_sticker_img
-
-        # redimensiona fg para w,h mantendo canais
-        if (fg.shape[1], fg.shape[0]) != (w, h):
-            if w <= 0 or h <= 0:
-                self.moving = False
-                return
-            resized = cv2.resize(fg, (w, h), interpolation=cv2.INTER_AREA)
-        else:
-            resized = fg
-
-        self.current = overlay_alpha(self.current, resized, x_img, y_img)
+        if not self.moving: return
         self.moving = False
-        self.moving_mode = None
-        self.moving_sticker_key = None
-        self.moving_sticker_img = None
-        self.temp_image = None
+        
+        # aplica definitivamente
+        stk = self.move_data['img']
+        w, h = self.move_data['size']
+        stk_resized = cv2.resize(stk, (w, h))
+        
+        x, y = self.move_data['pos']
+        
+        # aplica na imagem basee que tava salva
+        final_img = overlay_alpha(self.move_data['base_img'], stk_resized, x, y)
+        self.current = final_img
         self._refresh_canvas()
 
-    def show_sticker_preview_image(self, fg_rgba, pos, size):
-        """
-        Exibe preview do sticker durante arraste.
-        pos = (x_img, y_img) coordenadas na imagem (não canvas).
-        size = (w,h)
-        """
-        if self.current is None:
-            return
-        temp = self.temp_image.copy()
-        w, h = size
-        if w <= 0 or h <= 0:
-            self.display_image(temp)
-            return
-        # redimensiona mantendo canais (BGRA)
-        if (fg_rgba.shape[1], fg_rgba.shape[0]) != (w, h):
-            fg_resized = cv2.resize(fg_rgba, (w, h), interpolation=cv2.INTER_AREA)
-        else:
-            fg_resized = fg_rgba
-        preview = overlay_alpha(temp, fg_resized, pos[0], pos[1])
-        self.display_image(preview)
+    def draw_sticker_preview(self):
+        # pega a imagem limpa
+        temp = self.move_data['base_img'].copy()
+        stk = self.move_data['img']
+        w, h = self.move_data['size']
+        x, y = self.move_data['pos']
+        
+        stk_resized = cv2.resize(stk, (w, h))
+        preview = overlay_alpha(temp, stk_resized, x, y)
+        
+        self.current = preview 
+        self._refresh_canvas()
 
-    # --------- Câmera ---------
-    def start_camera(self):
-        if self.cam_running:
-            return
-        self.cap = cv2.VideoCapture(0)
-        self.cap.set(cv2.CAP_PROP_FRAME_WIDTH, CAM_WIDTH)
-        self.cap.set(cv2.CAP_PROP_FRAME_HEIGHT, CAM_HEIGHT)
-        if not self.cap.isOpened():
-            messagebox.showerror('Webcam', 'Não foi possível abrir a webcam')
-            return
-        self.cam_running = True
-        self.mode = 'video'
-        self.cam_thread = threading.Thread(target=self._camera_loop, daemon=True)
-        self.cam_thread.start()
-
-    def stop_camera(self):
-        self.cam_running = False
-        if self.cap:
-            try:
-                self.cap.release()
-            except Exception:
-                pass
-            self.cap = None
-
-    def _camera_loop(self):
-        while self.cam_running and self.cap and self.cap.isOpened():
-            ret, frame = self.cap.read()
-            if not ret:
-                break
-            fname = self.selected_filter.get()
-            out = apply_filter_cv(frame, fname)
-            # só dá update na current, nao muda a original
-            self.current = out
-            self._refresh_canvas_from_cv(out)
-        self.cam_running = False
-
-    def display_image(self, img_bgr):
-        self._refresh_canvas_from_cv(img_bgr)
-
-    # --------- Update da tela ---------
-    def _refresh_canvas(self):
-        if self.current is None:
-            self.canvas.delete('all')
-            return
-        self._refresh_canvas_from_cv(self.current)
-
-    def _refresh_canvas_from_cv(self, img_bgr):
-        """
-        Exibe img_bgr no canvas dimensionando para CAM_WIDTH x CAM_HEIGHT mantendo aspect ratio.
-        Armazena os valores de scale e offset para mapear cliques.
-        """
-        h, w = img_bgr.shape[:2]
-        scale = min(CAM_WIDTH / w, CAM_HEIGHT / h)
-        nw = int(w * scale)
-        nh = int(h * scale)
-        img_resized = cv2.resize(img_bgr, (nw, nh))
-        pil = cv2_to_pil(img_resized)
-        photo = ImageTk.PhotoImage(pil)
-        self._photoimage = photo
-        self.canvas.delete('all')
-        x = (CAM_WIDTH - nw) // 2
-        y = (CAM_HEIGHT - nh) // 2
-        self.canvas.create_image(x, y, anchor=tk.NW, image=photo)
-
-        # guarda dados para mapeamento
-        self.display_scale = scale
-        self.display_offset = (x, y)
-        self.display_size = (nw, nh)
-
-    # --------- Ajuda e sair ---------
-    def show_help(self):
-        txt = (
-            'Controles:\n'
-            '- Carregar imagem: abre uma imagem (Modo foto)\n'
-            '- Modo vídeo: abre a webcam e aplica o filtro selecionado ao vivo\n'
-            '- Aplicar filtro: aplica o filtro selecionado à imagem atual (filtros com valores fixos)\n'
-            '- Checkbox: escolher se o filtro aplica sempre sobre o ORIGINAL (não empilha)\n'
-            '- Stickers: selecione um sticker e clique na imagem para posicioná-lo (apenas Modo foto)\n'
-            '   - Arraste para mover o sticker\n'
-            '   - Arraste no canto inferior-direito do sticker para redimensionar (diagonal)\n'
-            '- Operações: carregue uma 2ª imagem e use Add/Sub/Blend\n'
-            '- Salvar: salva a imagem atual em disco'
-        )
-        messagebox.showinfo('Ajuda', txt)
-
-    def on_close(self):
-        if self.cam_running:
-            self.stop_camera()
-        self.root.quit()
-        self.root.destroy()
-
-# ------------------- Main -------------------
-
-def main():
+# ------------------- main -------------------
+if __name__ == '__main__':
     root = tk.Tk()
     app = EditorApp(root)
-    root.protocol('WM_DELETE_WINDOW', app.on_close)
     root.mainloop()
-
-if __name__ == '__main__':
-    main()
