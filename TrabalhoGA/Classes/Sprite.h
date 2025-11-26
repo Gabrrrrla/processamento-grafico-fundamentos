@@ -17,9 +17,9 @@ public:
     GLuint textureID;
 
     // Variáveis para a animação
-    int numFrames; // Número total de quadros na animação
+    int numFrames;      // Número total de quadros na animação
     int currentFrame;
-    float frameTime; // Tempo de exibição de cada quadro
+    float frameTime;    // Tempo de exibição de cada quadro
     float elapsedTime; // Tempo decorrido para a animação
     
     // Dimensões do spritesheet

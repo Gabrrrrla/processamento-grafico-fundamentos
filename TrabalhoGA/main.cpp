@@ -87,10 +87,10 @@ int main() {
     }
 
     /* 
-    Ativa transparência para sprites.
-    Cria e usa o shader principal.
-    Passa a matriz de projeção para o shader.
-    Diz qual unidade de textura o shader deve usar.
+    Ativa transparência para sprites
+    Cria e usa o shader principal
+    setMat4 passa a matriz de projeção para o shader
+    setInt diz qual unidade de textura o shader deve usar
     */
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
@@ -212,6 +212,7 @@ int main() {
                 for (auto& obs : obstacles) {
                     obs.Position.x -= obstacleSpeed * deltaTime;
 
+                    // Se o obstáculo saiu da tela, precisa reposicionar na direita
                     if (obs.Position.x + obs.Size.x < 0) {
                         float newX;
                         bool overlap;
@@ -310,7 +311,6 @@ int main() {
     }  
     
         // Parte da renderização
-
         glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
 

@@ -45,9 +45,10 @@ Sprite::Sprite(glm::vec2 pos, glm::vec2 size, const char* texturePath, int frame
     glBindVertexArray(0);
 }
 
+// Controla o tempo de troca dos frames
 void Sprite::UpdateAnimation(float deltaTime) {
     elapsedTime += deltaTime;
-    if (elapsedTime >= frameTime) {
+    if (elapsedTime >= frameTime) { // Se já passou do tempo de cada frame, troca
         currentFrame = (currentFrame + 1) % numFrames;
         elapsedTime = 0.0f;
     }
@@ -62,7 +63,7 @@ void Sprite::ChangeAnimation(const char* newTexturePath, int newFrames, float ne
     }
     numFrames = newFrames;
     frameTime = newTimePerFrame;
-    currentFrame = 0;
+    currentFrame = 0; // A animação começa no primeiro frame
     elapsedTime = 0.0f;
     row = newRow; 
     frameWidth = newFrameWidth; 
@@ -71,6 +72,11 @@ void Sprite::ChangeAnimation(const char* newTexturePath, int newFrames, float ne
     totalTextureWidth = newTotalTextureWidth;
 }
 
+/*
+Verifica se os sprites se sobrepõem horizontalmente
+Só há colisão no X se  lado direito do atual é maior ou igual ao lado esquerdo do outro
+O lado direito do outro é maior ou igual ao lado esquerdo do atual
+*/
 bool Sprite::CheckCollision(const Sprite& other) {
     bool collisionX = Position.x + Size.x >= other.Position.x &&
                       other.Position.x + other.Size.x >= Position.x;
@@ -96,6 +102,7 @@ void Sprite::Draw(Shader& shader) {
 
     
     // Calcula UVs com base nos parâmetros configuráveis 
+    // Permite desenhar um quadro específico da folha de sprites no quadrado na tela
     float u = (float)currentFrame * (frameWidth / totalTextureWidth); 
     float v = 1.0f - ((float)row + 1.0f) * (frameHeight / totalTextureHeight);
 

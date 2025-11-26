@@ -13,7 +13,7 @@ import numpy as np
 
 # ------------------- Config -------------------
 STICKERS_DIR = 'stickers'
-WINDOW_TITLE = 'Editor de Imagens e Vídeo - Grau A'
+WINDOW_TITLE = 'Editor de Imagens e Vídeo - Grau B'
 CAM_WIDTH = 640
 CAM_HEIGHT = 480
 
@@ -46,7 +46,7 @@ def apply_filter_cv(img_bgr, name):
     
     if name == 'none': return img
     
-    # conversões necessárias para filtros que exigem Gray na entrada
+    # conversões pra filtros que exigem Gray na entrada
     if name in ['canny', 'hist_eq', 'laplacian']:
         # se já for colorido, converte para processar, depois volta para BGR para manter padrão
         gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
@@ -391,7 +391,7 @@ class EditorApp:
         # aplica a visualização de canal (RGB, R, G, B ou Gray)
         view_img = get_channel_view(self.current, self.selected_channel.get())
         
-        # converte para exibir no Tkinter
+        # converte para exibir no tkinter
         h, w = view_img.shape[:2]
         
         # lógica de redimensionar para caber na tela mantendo proporção
@@ -414,7 +414,7 @@ class EditorApp:
         # salva dados pra converter coordenadas do mouse depois
         self.display_params = {'scale': scale, 'offset': (off_x, off_y), 'size': (nw, nh)}
 
-    # --- Mouse events pros stickers ---
+    # --- mouse events pros stickers ---
     def get_img_coords(self, cx, cy):
         """Converte X,Y do Canvas para X,Y da imagem real"""
         scale = self.display_params['scale']
@@ -446,10 +446,7 @@ class EditorApp:
         if not self.moving: return
         ix, iy = self.get_img_coords(event.x, event.y)
         
-        # Lógica simples: se clicar e arrastar, move o topo-esquerdo
-        # Se quisesse redimensionar, checaria se o clique foi perto da borda inferior direita
-        
-        # Detectar modo resize (se estiver perto do canto inferior direito do sticker atual)
+        # se clicar e arrastar, move o topo-esquerdo
         mx, my = self.move_data['pos']
         mw, mh = self.move_data['size']
         
