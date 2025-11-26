@@ -26,7 +26,7 @@ do curso **Ciência da Computação** da Unisinos. Ele é estruturado para facil
 
 ---
 
-## ✨ Contribuições
+## ✨ Informações
 
 Cada pasta terá seu próprio **README.md** explicando a finalidade e instruções de uso.
 
