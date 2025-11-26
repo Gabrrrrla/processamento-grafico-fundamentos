@@ -47,11 +47,11 @@ O foco é explorar **técnicas de processamento digital de imagens** utilizando 
 TrabalhoGB/
 ├── main.py
 ├── stickers/
-│   ├── a.png
-│   ├── b.png
-│   ├── c.png
-│   ├── d.png
-│   └── e.png
+│   ├── snoopy_arvore.png
+│   ├── snoopy_coracao.png
+│   ├── snoopy_natalino.png
+│   ├── snoopy_normal.png
+│   └── snoopy_swag.png
 ├── README.md
 ├── requirements.txt
 └── .gitignore
