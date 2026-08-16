@@ -1,10 +1,10 @@
 # Elfa Corredora ✨
 
-🧝‍♀️ **Elfa Corredora** 🧝‍♀️ é um jogo 2D simples desenvolvido em C++ usando OpenGL, GLFW e GLM. O jogador controla uma elfa que corre automaticamente, podendo pular e abaixar para evitar obstáculos e coletar cristais.
+**Elfa Corredora** é um jogo 2D simples desenvolvido em C++ usando OpenGL, GLFW e GLM. O jogador controla uma elfa que corre automaticamente, podendo pular e abaixar para evitar obstáculos e coletar cristais.
 
 ---
 
-## Funcionalidades 🪵
+## Funcionalidades
 
 - Movimentação automática da elfa da esquerda para a direita.
 - Pular e abaixar para evitar obstáculos.
@@ -17,7 +17,7 @@
 
 ---
 
-## Dependências ⚙️
+## Dependências
 
 O projeto utiliza as seguintes bibliotecas:
 
@@ -32,7 +32,7 @@ O projeto utiliza as seguintes bibliotecas:
 
 ---
 
-## Estrutura do projeto 📂
+## Estrutura do projeto
 
 ```
 TrabalhoGA/
@@ -60,7 +60,7 @@ TrabalhoGA/
 
 ---
 
-## Como compilar 💻
+## Como compilar
 
 1. Clone o repositório:
 
@@ -87,7 +87,7 @@ g++ main.cpp Classes/*.cpp -o ElfaCorredora -lglfw3 -lGL -ldl -lX11 -pthread
 
 ---
 
-## Controles 🕹️
+## Controles
 
 - **Espaço / Seta para cima:** Pular  
 - **S / Seta para baixo:** Abaixar
